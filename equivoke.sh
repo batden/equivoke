@@ -10,7 +10,7 @@
 # Optional: Additional steps may be taken to achieve optimal results.
 # Please refer to the comments of the build_plain() function.
 
-# Source external configuration file.
+# Source external config file.
 if [ -f "$HOME/.equivoke/config.sh" ]; then
   source "$HOME/.equivoke/config.sh"
 else
@@ -459,7 +459,7 @@ install_now() {
   That's All Folks!" | lolcat -a
   echo
 
-  cp -f "$dldir/extol.sh" "$HOME/.local/bin"
+  cp -f "$dldir/equivoke.sh" "$HOME/.local/bin"
 
   exit 0
 }
@@ -470,8 +470,8 @@ release_go() {
 
   # Checks for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
-  cp -f extol.sh "$HOME/.local/bin"
-  chmod +x "$HOME/.local/bin/extol.sh"
+  cp -f equivoke.sh "$HOME/.local/bin"
+  chmod +x "$HOME/.local/bin/equivoke.sh"
   sleep 1
 
   rebuild_optim
@@ -502,8 +502,8 @@ wayld_go() {
 
   # Checks for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
-  cp -f extol.sh "$HOME/.local/bin"
-  chmod +x "$HOME/.local/bin/extol.sh"
+  cp -f equivoke.sh "$HOME/.local/bin"
+  chmod +x "$HOME/.local/bin/equivoke.sh"
   sleep 1
 
   rebuild_wayld
