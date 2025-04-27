@@ -385,7 +385,7 @@ install_now() {
   set_p_src
 
   cd "$HOME"
-  mkdir -p "$esrcdir/enlighten"
+  mkdir -p "$esrcdir"/enlighten
   cd "$esrcdir"/enlighten
 
   printf "\n\n$bold%s $off%s\n\n" "Fetching source code from the Enlightenment git repositories..."
@@ -500,10 +500,11 @@ wayld_go() {
   clear
   printf "\n$orange_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON WAYLAND *"
 
-  # Checks for available updates of the script folder first.
+# Checks for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
   cp -f equivoke.sh "$HOME/.local/bin"
   chmod +x "$HOME/.local/bin/equivoke.sh"
+
   sleep 1
 
   rebuild_wayld
