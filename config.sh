@@ -261,12 +261,3 @@ EOF
 
   . "$HOME/.bash_aliases"
 }
-
-rstrt_e() {
-  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    enlightenment_remote -restart
-    if [ -x /usr/bin/spd-say ]; then
-      spd-say --language Rob 'enlightenment is awesome'
-    fi
-  fi
-}
