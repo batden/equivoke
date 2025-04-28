@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC1091 disable=SC2034
+# shellcheck disable=SC1091 disable=SC2034 disable=SC2148
 
 # Companion script for equivoke.sh.
 
