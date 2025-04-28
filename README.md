@@ -13,7 +13,7 @@ Please refer to the script comments for hints and additional information.
 
 ## Getting started
 
-Before using extol, you may need to install the git package on your system if it isn't already there.
+Before using equivoke, you may need to install the git package on your system if it isn't already there.
 
 Open a terminal window and type in the following:
 
@@ -24,33 +24,33 @@ sudo apt install git
 Next, clone the repository with:
 
 ```bash
-git clone https://github.com/batden/extol.git .extol
+git clone https://github.com/batden/equivoke.git .equivoke
 ```
 
-This creates a new hidden folder named .extol in your home directory.
+This creates a new hidden folder named .equivoke in your home directory.
 
-Copy the extol.sh file from the new .extol folder to your download folder.
+Copy the config.sh and equivoke.sh files from the new .equivoke folder to your download folder.
 
-Navigate to the download folder and make the script executable:
+Navigate to the download folder and make the scripts executable:
 
 ```bash
-chmod +x extol.sh
+chmod +x config.sh equivoke.sh
 ```
 
-Then, execute the script:
+Then, execute the main script:
 
 ```bash
-./extol.sh
+./equivoke.sh
 ```
 
 To run it again later, just open a terminal and type:
 
 ```bash
-extol.sh
+equivoke.sh
 ```
 
 > [!TIP]
-> Use auto-completion: Type _ext_ and press the Tab key.
+> Use auto-completion: Type _equ_ and press the Tab key.
 
 That's it.
 
