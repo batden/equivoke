@@ -16,10 +16,10 @@
 # Thank you!
 
 # Source external config file.
-if [ -f "$HOME/.equivoke/config.sh" ]; then
-  source "$HOME/.equivoke/config.sh"
+if [ -f "$HOME/.equivoke/konfig.sh" ]; then
+  source "$HOME/.equivoke/konfig.sh"
 else
-  printf "\n$red_bright%s %s\n" "CONFIGURATION FILE NOT FOUND"
+  printf "\n$red_bright%s %s\n" "KONFIG.SH NOT FOUND"
   printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
   beep_exit
   exit 1
