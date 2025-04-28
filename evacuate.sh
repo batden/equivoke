@@ -175,7 +175,7 @@ del_list() {
   rm -rf .config/express
   rm -rf .config/rage
   rm -rf .config/terminology
-  rm -rf .local/bin/extol.sh
+  rm -rf .local/bin/equivoke.sh
 }
 
 final_stp() {
