@@ -165,20 +165,21 @@ prog_mbs=(
 )
 
 mbs_prog=(
-  terminology
-  enlightenment
-  ephoto
-  rage
-  evisum
-  express
-  ecrire
-  enventor
-  edi
-  entice
-  enlightenment-module-forecasts
-  enlightenment-module-penguins
-  enlightenment-module-places
   eflete
+  enlightenment-module-places
+  enlightenment-module-penguins
+  enlightenment-module-forecasts
+  entice
+  edi
+  enventor
+  ecrire
+  express
+  evisum
+  rage
+  ephoto
+  enlightenment
+  terminology
+  efl
 )
 
 # Audible feedback (event, sudo prompt...) on most systems.
