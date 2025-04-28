@@ -10,6 +10,36 @@
 # Optional: Additional steps may be taken to achieve optimal results.
 # Please refer to the comments of the build_plain() function.
 
+# EQUIVOKE.SH takes care of downloading, configuring, and building everything
+# you need to enjoy the very latest version of the Enlightenment environment
+# (DEB packages, if they exist, tend to lag far behind). Once installed,
+# you can update your Enlightenment desktop whenever you like.
+
+# Optional: Additional steps may be taken to achieve optimal results.
+# Please refer to the comments of the build_plain() function.
+
+# Tip: Set your terminal scrollback to unlimited so that you can scroll up
+# to look at the earlier output at any time.
+
+# See README.md for instructions on how to use this script.
+# See also the repository's wiki for post-installation hints.
+
+# Heads up!
+# Enlightenment programs compiled from git source code will inevitably conflict
+# with those installed from DEB packages. Therefore, remove all previous binary
+# installations of EFL, Enlightenment, and related applications before running
+# this script.
+
+# Also note that EQUIVOKE.SH is not compatible with non-standard package managers like Nix.
+
+# EQUIVOKE.SH is licensed under a Creative Commons Attribution 4.0 International License,
+# in memory of Aaron Swartz.
+# See https://creativecommons.org/licenses/by/4.0/
+
+# If you find our scripts useful, please consider starring our repositories or
+# donating with PayPal (see README.md) to show your support.
+# Thank you!
+
 # Source external config file.
 if [ -f "$HOME/.equivoke/config.sh" ]; then
   source "$HOME/.equivoke/config.sh"
@@ -500,7 +530,7 @@ wayld_go() {
   clear
   printf "\n$orange_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON WAYLAND *"
 
-# Checks for available updates of the script folder first.
+  # Checks for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
   cp -f equivoke.sh "$HOME/.local/bin"
   chmod +x "$HOME/.local/bin/equivoke.sh"
