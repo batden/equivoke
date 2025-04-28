@@ -45,12 +45,13 @@ else
   printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
 fi
 
-if [ -f "$HOME/.equivoke/evakuate.sh" ]; then
-  source "$HOME/.equivoke/evakuate.sh"
-else
-  printf "\n$red_bright%s %s\n" "EVAKUATE.SH NOT FOUND"
-  printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
-fi
+# À TRANSFORMER EN FONCTION...
+# if [ -f "$HOME/.equivoke/evakuate.sh" ]; then
+#   source "$HOME/.equivoke/evakuate.sh"
+# else
+#   printf "\n$red_bright%s %s\n" "EVAKUATE.SH NOT FOUND"
+#   printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
+# fi
 
 # Menu hints and prompts.
 # 1: A no-frills, plain build.
