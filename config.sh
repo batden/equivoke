@@ -255,7 +255,7 @@ do_bsh_alias() {
 
   cat >"$HOME/.bash_aliases" <<EOF
     # ---------------------
-    # ENVIRONMENT VARIABLES
+    # Environment variables
     # ---------------------
     # (These variables can be accessed from any shell session.)
 
