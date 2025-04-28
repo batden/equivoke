@@ -20,7 +20,7 @@ red_bright="\e[1;38;5;1m"
 italic="\e[3m"
 off="\e[0m"
 
-scrfldr=$HOME/.extol
+scrfldr=$HOME/.equivoke
 
 prog_mbs=(
   terminology
