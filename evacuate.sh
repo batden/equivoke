@@ -16,6 +16,16 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
+# Source external config file.
+if [ -f "$HOME/.equivoke/config.sh" ]; then
+  source "$HOME/.equivoke/config.sh"
+else
+  printf "\n$red_bright%s %s\n" "CONFIGURATION FILE NOT FOUND"
+  printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
+  beep_exit
+  exit 1
+fi
+
 # Cleans up any leftover files after uninstalling Enlightenment and related applications.
 del_list() {
   cd /etc
