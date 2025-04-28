@@ -147,6 +147,7 @@ clonete="git clone https://github.com/dimmus/eflete.git"
 
 # “mbs” stands for Meson Build System.
 prog_mbs=(
+  efl
   terminology
   enlightenment
   ephoto
@@ -161,7 +162,23 @@ prog_mbs=(
   enlightenment-module-penguins
   enlightenment-module-places
   eflete
-  efl
+)
+
+mbs_prog=(
+  terminology
+  enlightenment
+  ephoto
+  rage
+  evisum
+  express
+  ecrire
+  enventor
+  edi
+  entice
+  enlightenment-module-forecasts
+  enlightenment-module-penguins
+  enlightenment-module-places
+  eflete
 )
 
 # Audible feedback (event, sudo prompt...) on most systems.
