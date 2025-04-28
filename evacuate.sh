@@ -16,34 +16,6 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-red_bright="\e[1;38;5;1m"
-italic="\e[3m"
-off="\e[0m"
-
-scrfldr=$HOME/.equivoke
-
-prog_mbs=(
-  terminology
-  enlightenment
-  ephoto
-  rage
-  evisum
-  express
-  ecrire
-  enventor
-  edi
-  entice
-  enlightenment-module-forecasts
-  enlightenment-module-penguins
-  enlightenment-module-places
-  eflete
-  efl
-)
-
-beep_exit() {
-  aplay --quiet /usr/share/sounds/sound-icons/pipe.wav
-}
-
 # Cleans up any leftover files after uninstalling Enlightenment and related applications.
 del_list() {
   cd /etc
