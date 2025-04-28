@@ -7,7 +7,7 @@
 # There is no safe way to remove them automatically, without close supervision
 # by the user.
 
-# EVACUATE.SH is licensed under a Creative Commons Attribution 4.0 International License,
+# EVAKUATE.SH is licensed under a Creative Commons Attribution 4.0 International License,
 # in memory of Aaron Swartz.
 # See https://creativecommons.org/licenses/by/4.0/
 
@@ -261,7 +261,7 @@ lo() {
   uninstall_enlighten
 
   printf "\n\n$red_bright%s %s\n" "Done."
-  printf "$red_bright%s $off%s\n\n" 'Candidates for further deletion: Search for "evacuate" and "ebackups" in your home folder.'
+  printf "$red_bright%s $off%s\n\n" 'Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
 }
 
 lo
