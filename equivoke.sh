@@ -37,14 +37,19 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-# Source external config file.
-if [ -f "$HOME/.equivoke/config.sh" ]; then
-  source "$HOME/.equivoke/config.sh"
+# Source external companion scripts.
+if [ -f "$HOME/.equivoke/konfig.sh" ]; then
+  source "$HOME/.equivoke/konfig.sh"
 else
-  printf "\n$red_bright%s %s\n" "CONFIGURATION FILE NOT FOUND"
+  printf "\n$red_bright%s %s\n" "KONFIG.SH NOT FOUND"
   printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
-  beep_exit
-  exit 1
+fi
+
+if [ -f "$HOME/.equivoke/evakuate.sh" ]; then
+  source "$HOME/.equivoke/evakuate.sh"
+else
+  printf "\n$red_bright%s %s\n" "EVAKUATE.SH NOT FOUND"
+  printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
 fi
 
 # Menu hints and prompts.
