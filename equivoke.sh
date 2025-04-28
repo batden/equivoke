@@ -7,9 +7,6 @@
 
 # Supported distribution: Ubuntu Plucky Puffin.
 
-# Optional: Additional steps may be taken to achieve optimal results.
-# Please refer to the comments of the build_plain() function.
-
 # EQUIVOKE.SH takes care of downloading, configuring, and building everything
 # you need to enjoy the very latest version of the Enlightenment environment
 # (DEB packages, if they exist, tend to lag far behind). Once installed,
