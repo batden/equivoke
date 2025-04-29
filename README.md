@@ -58,13 +58,7 @@ That's it.
 
 You can uninstall Enlightenment and related applications from your computer at any time.
 
-To do this, copy the evakuate.sh file from the .equivoke folder to your download folder.
-
-Navigate to the download folder and make the script executable:
-
-```bash
-evakuate.sh
-```
+To do this, run the script again and select option 4 from the menu.
 
 ### In the picture
 
