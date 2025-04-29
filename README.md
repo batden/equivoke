@@ -60,7 +60,7 @@ You can uninstall Enlightenment and related applications from your computer at a
 
 To do so, run the script again and select option 4 from the menu.
 
-## In the picture
+## In the Picture
 
 ![GitHub Image](/images/enlightenment.jpg)
 
