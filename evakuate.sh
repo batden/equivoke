@@ -245,7 +245,7 @@ uninstall_enlighten() {
   final_stp
 }
 
-lo() {
+lo_rm() {
   trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
 
   uninstall_enlighten
@@ -254,4 +254,4 @@ lo() {
   printf "$red_bright%s $off%s\n\n" 'Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
 }
 
-lo
+lo_rm
