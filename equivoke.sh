@@ -45,7 +45,7 @@ else
   printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
 fi
 
-# Source uninstall script.
+# Source uninstall script and make it available.
 source_uninstl() {
   if [ -f "$HOME/.equivoke/evakuate.sh" ]; then
     source "$HOME/.equivoke/evakuate.sh"
@@ -53,6 +53,9 @@ source_uninstl() {
     printf "\n$red_bright%s %s\n" "EVAKUATE.SH NOT FOUND"
     printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
   fi
+
+  ### TODO...
+
 }
 
 # Menu hints and prompts.
