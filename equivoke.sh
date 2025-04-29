@@ -596,22 +596,26 @@ bhd() {
   if [ "$usr_input" == 1 ]; then
     do_tests
     install_now
+    chk_pv
+    chk_sl
   elif [ "$usr_input" == 2 ]; then
     do_tests
     release_go
+    chk_pv
+    chk_sl
   elif [ "$usr_input" == 3 ]; then
     do_tests
     wayld_go
+    chk_pv
+    chk_sl
   elif [ "$usr_input" == 4 ]; then
     source_uninstl
-
+    lo_rm
   else
     beep_exit
     exit 1
   fi
 }
 
-chk_pv
-chk_sl
 lo
 bhd
