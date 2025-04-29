@@ -595,19 +595,19 @@ lo() {
 bhd() {
   if [ "$usr_input" == 1 ]; then
     do_tests
-    install_now
     chk_pv
     chk_sl
+    install_now
   elif [ "$usr_input" == 2 ]; then
     do_tests
-    release_go
     chk_pv
     chk_sl
+    release_go
   elif [ "$usr_input" == 3 ]; then
     do_tests
-    wayld_go
     chk_pv
     chk_sl
+    wayld_go
   elif [ "$usr_input" == 4 ]; then
     source_uninstl
     lo_rm
