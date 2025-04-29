@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC1091 disable=SC2034 disable=SC2148
 
-# This file contains variables, functions and tests used by the other scripts.
+# This script contains variables, functions and tests used by the other scripts.
 
 # Colors and formatting.
 green_bright="\e[1;38;5;118m"
