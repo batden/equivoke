@@ -11,7 +11,7 @@ Please refer to the scripts comments for hints and additional information.
 >
 > Check out our [backup script](https://gist.github.com/batden/993b5ee997b3df2c3b075907a1dff116).
 
-## Getting started
+## Installation
 
 Before using equivoke, you may need to install the git package on your system if it isn't already there.
 
@@ -60,7 +60,7 @@ You can uninstall Enlightenment and related applications from your computer at a
 
 To do so, run the script again and select option 4 from the menu.
 
-### In the picture
+## In the picture
 
 ![GitHub Image](/images/enlightenment.jpg)
 
