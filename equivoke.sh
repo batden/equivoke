@@ -199,8 +199,6 @@ e_tokens() {
 # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
 #
 build_plain() {
-  source_extn
-
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
 
@@ -244,7 +242,6 @@ build_plain() {
 rebuild_optim() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
-  source_extn
   bin_dps
   e_tokens
 
@@ -301,8 +298,6 @@ rebuild_optim() {
 
 rebuild_wayld() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
-
-  source_extn
 
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     printf "\n$red_bright%s $off%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
