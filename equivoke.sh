@@ -37,7 +37,7 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-# Source external companion scripts.
+# Source configuration script.
 if [ -f "$HOME/.equivoke/konfig.sh" ]; then
   source "$HOME/.equivoke/konfig.sh"
 else
@@ -45,13 +45,15 @@ else
   printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
 fi
 
-# À TRANSFORMER EN FONCTION...
-# if [ -f "$HOME/.equivoke/evakuate.sh" ]; then
-#   source "$HOME/.equivoke/evakuate.sh"
-# else
-#   printf "\n$red_bright%s %s\n" "EVAKUATE.SH NOT FOUND"
-#   printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
-# fi
+# Source uninstall script.
+source_uninstl() {
+  if [ -f "$HOME/.equivoke/evakuate.sh" ]; then
+    source "$HOME/.equivoke/evakuate.sh"
+  else
+    printf "\n$red_bright%s %s\n" "EVAKUATE.SH NOT FOUND"
+    printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
+  fi
+}
 
 # Menu hints and prompts.
 # 1: A no-frills, plain build.
@@ -195,6 +197,8 @@ e_tokens() {
 # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
 #
 build_plain() {
+  source_extn
+
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
 
@@ -238,6 +242,7 @@ build_plain() {
 rebuild_optim() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
+  source_extn
   bin_dps
   e_tokens
 
@@ -294,6 +299,8 @@ rebuild_optim() {
 
 rebuild_wayld() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
+
+  source_extn
 
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     printf "\n$red_bright%s $off%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
@@ -595,6 +602,9 @@ bhd() {
   elif [ "$usr_input" == 3 ]; then
     do_tests
     wayld_go
+  elif [ "$usr_input" == 4 ]; then
+    source_uninstl
+
   else
     beep_exit
     exit 1
