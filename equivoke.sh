@@ -39,21 +39,21 @@
 
 # Source configuration script.
 if [ -f "$DLDIR/konfig.sh" ]; then
+  cp -f "$HOME/.equivoke/konfig.sh" "$DLDIR"
+  chmod +x "$DLDIR/konfig.sh"
   source "$DLDIR/konfig.sh"
 else
-  printf "\n$red_bright%s %s\n" "KONFIG.SH NOT FOUND"
-  printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
+  source "$DLDIR/konfig.sh"
 fi
 
-# Source uninstall script and make it available.
+# Source uninstall script.
 source_uninstl() {
   if [ -f "$DLDIR/evakuate.sh" ]; then
     cp -f "$HOME/.equivoke/evakuate.sh" "$DLDIR"
     chmod +x "$DLDIR/evakuate.sh"
     source "$DLDIR/evakuate.sh"
   else
-    printf "\n$red_bright%s %s\n" "EVAKUATE.SH NOT FOUND"
-    printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
+    source "$DLDIR/evakuate.sh"
   fi
 }
 
