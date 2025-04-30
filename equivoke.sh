@@ -3,7 +3,8 @@
 
 # This script allows you to easily and securely install or update Enlightenment along with other
 # applications based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
-# Or it will help you to uninstall the Enlightenment ecosystem cleanly and safely.
+# Alternatively, because of the overall modular approach, it will help you to uninstall#
+# the Enlightenment ecosystem in a clean and safe way.
 
 # Supported distribution: Ubuntu Plucky Puffin.
 
