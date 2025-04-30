@@ -385,8 +385,10 @@ set_p_src() {
     exit 1
   fi
 
-  mkdir -p "$mypath/sources"
-  p_srcdir="$mypath/sources"
+  mkdir -p "$mypath"/sources
+  p_srcdir="$mypath"/sources
+
+  mkdir -p "$HOME"/.cache/ebuilds
   echo "$p_srcdir" >"$HOME/.cache/ebuilds/storepath"
   printf "\n$green_bright%s $off%s\n\n" "You have chosen: $p_srcdir"
   sleep 1
