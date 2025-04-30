@@ -259,7 +259,7 @@ do_bsh_alias() {
     # ---------------------
     # (These variables can be accessed from any shell session.)
 
-    # Compiler and linker flags added by EQUIVOKE.
+    # Compiler and linker flags added by KONFIG.SH.
     export CC="ccache gcc"
     export CXX="ccache g++"
     export USE_CCACHE=1
