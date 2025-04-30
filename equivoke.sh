@@ -425,8 +425,8 @@ install_now() {
   set_p_src
 
   cd "$HOME"
-  mkdir -p "$esrcdir"/enlighten
-  cd "$esrcdir"/enlighten
+  mkdir -p "$esrcdir/enlighten"
+  cd "$esrcdir/enlighten"
 
   printf "\n\n$bold%s $off%s\n\n" "Fetching source code from the Enlightenment git repositories..."
   $clonefl
