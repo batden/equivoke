@@ -153,7 +153,7 @@ del_list() {
   sudo rm -rf enlightenment.desktop
 
   cd "$HOME"
-  sudo rm -rf "$esrcdir"/enlighten
+  sudo rm -rf "$esrcdir/enlighten"
   rm -rf "$scrfldr"
   rm -rf .e
   rm -rf .e-log*
