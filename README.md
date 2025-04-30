@@ -29,7 +29,7 @@ git clone https://github.com/batden/equivoke.git .equivoke
 
 This creates a new hidden folder named .equivoke in your home directory.
 
-Copy the konfig.sh and equivoke.sh files from the new .equivoke folder to your download folder.
+Copy the equivoke.sh and konfig.sh files from the new .equivoke folder to your download folder.
 
 Navigate to the download folder and make the two scripts executable:
 
