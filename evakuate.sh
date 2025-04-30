@@ -153,7 +153,6 @@ del_list() {
   sudo rm -rf enlightenment.desktop
 
   cd "$HOME"
-  sudo rm -rf "$esrcdir/enlighten"
   rm -rf "$scrfldr"
   rm -rf .e
   rm -rf .e-log*
@@ -175,6 +174,8 @@ del_list() {
   rm -rf .config/rage
   rm -rf .config/terminology
   rm -rf .local/bin/equivoke.sh
+  rm -rf "$scrfldr"
+  sudo rm -rf "$esrcdir/enlighten"
 }
 
 final_stp() {
