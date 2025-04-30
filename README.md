@@ -1,8 +1,8 @@
 # equivoke
 
-A set of bash scripts to build/install/update the Enlightenment environment on your system,
+A set of bash scripts to build/install/update the Enlightenment environment on your system.
 
-or to uninstall this ecosystem from Ubuntu.
+Or, conversely, to uninstall this environment whenever you'd like.
 
 Please refer to the scripts comments for hints and additional information.
 
