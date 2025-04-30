@@ -34,7 +34,7 @@ Copy the konfig.sh and equivoke.sh files from the new .equivoke folder to your d
 Navigate to the download folder and make the two scripts executable:
 
 ```bash
-chmod +x config.sh equivoke.sh
+chmod +x konfig.sh equivoke.sh
 ```
 
 Then, execute the main script:
