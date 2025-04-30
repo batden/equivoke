@@ -153,7 +153,6 @@ del_list() {
   sudo rm -rf enlightenment.desktop
 
   cd "$HOME"
-  rm -rf "$scrfldr"
   rm -rf .e
   rm -rf .e-log*
   rm -rf .elementary
