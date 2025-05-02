@@ -38,25 +38,8 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-# Source configuration script.
-if [ -f "$DLDIR/konfig.sh" ]; then
-  cp -f "$HOME/.equivoke/konfig.sh" "$DLDIR"
-  chmod +x "$DLDIR/konfig.sh"
-  source "$DLDIR/konfig.sh"
-else
-  source "$DLDIR/konfig.sh"
-fi
-
-# Source uninstall script.
-source_uninstl() {
-  if [ -f "$DLDIR/evakuate.sh" ]; then
-    cp -f "$HOME/.equivoke/evakuate.sh" "$DLDIR"
-    chmod +x "$DLDIR/evakuate.sh"
-    source "$DLDIR/evakuate.sh"
-  else
-    source "$DLDIR/evakuate.sh"
-  fi
-}
+# Source companion scripts.
+source "$HOME"/.equivoke/konfig.sh evakuate.sh
 
 # Menu hints and prompts.
 # 1: A no-frills, plain build.
@@ -413,6 +396,15 @@ chk_sl() {
   if [ ! -x /usr/games/sl ]; then
     printf "\n$bold%s $off%s\n\n" "Installing the sl command for special animation..."
     sudo apt install -y sl
+  fi
+}
+
+rstrt_e() {
+  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
+    enlightenment_remote -restart
+    if [ -x /usr/bin/spd-say ]; then
+      spd-say --language Rob 'enlightenment is awesome'
+    fi
   fi
 }
 
