@@ -15,6 +15,8 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
+trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
+
 # Cleans up any leftover files after uninstalling Enlightenment and related applications.
 del_list() {
   cd /etc
@@ -245,11 +247,7 @@ uninstall_enlighten() {
   final_stp
 }
 
-lo_rm() {
-  trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
+uninstall_enlighten
 
-  uninstall_enlighten
-
-  printf "\n\n$red_bright%s %s\n" "Done."
-  printf "$red_bright%s $off%s\n\n" 'Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
-}
+printf "\n\n$red_bright%s %s\n" "Done."
+# Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
