@@ -587,10 +587,6 @@ lo() {
 
 # Then get the user's choice.
 bhd() {
-  readonly OPTION_INSTALL=1
-  readonly OPTION_UPDATE_RELEASE=2
-  readonly OPTION_UPDATE_WAYLAND=3
-  readonly OPTION_UNINSTALL=4
 
   case "$usr_input" in
   1)
