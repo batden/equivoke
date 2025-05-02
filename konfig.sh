@@ -165,24 +165,6 @@ prog_mbs=(
   eflete
 )
 
-mbs_prog=(
-  eflete
-  enlightenment-module-places
-  enlightenment-module-penguins
-  enlightenment-module-forecasts
-  entice
-  edi
-  enventor
-  ecrire
-  express
-  evisum
-  rage
-  ephoto
-  enlightenment
-  terminology
-  efl
-)
-
 # Audible feedback (event, sudo prompt...) on most systems.
 beep_complete() {
   aplay --quiet /usr/share/sounds/sound-icons/glass-water-1.wav 2>/dev/null
