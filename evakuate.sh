@@ -253,5 +253,3 @@ lo_rm() {
   printf "\n\n$red_bright%s %s\n" "Done."
   printf "$red_bright%s $off%s\n\n" 'Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
 }
-
-lo_rm
