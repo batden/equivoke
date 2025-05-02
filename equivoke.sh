@@ -589,28 +589,24 @@ lo() {
 bhd() {
   case "$usr_input" in
   1)
-    lo
     do_tests
     chk_pv
     chk_sl
     install_now
     ;;
   2)
-    lo
     do_tests
     chk_pv
     chk_sl
     release_go
     ;;
   3)
-    lo
     do_tests
     chk_pv
     chk_sl
     wayld_go
     ;;
   4)
-    lo
     source "$HOME"/.equivoke/evakuate.sh
     uninstall_enlighten
     ;;
@@ -621,4 +617,5 @@ bhd() {
   esac
 }
 
+lo
 bhd
