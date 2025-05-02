@@ -246,8 +246,3 @@ uninstall_enlighten() {
   del_list
   final_stp
 }
-
-uninstall_enlighten
-
-printf "\n\n$red_bright%s %s\n" "Done."
-# Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
