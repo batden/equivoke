@@ -617,7 +617,7 @@ bhd() {
   4)
     lo
     source "$HOME"/.equivoke/evakuate.sh
-    lo_rm
+    uninstall_enlighten
     ;;
   *)
     beep_exit
