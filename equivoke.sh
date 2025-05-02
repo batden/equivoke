@@ -587,7 +587,6 @@ lo() {
 
 # Then get the user's choice.
 bhd() {
-
   case "$usr_input" in
   1)
     lo
