@@ -587,28 +587,37 @@ lo() {
 
 # Then get the user's choice.
 bhd() {
-  if [ "$usr_input" == 1 ]; then
+  case "$usr_input" in
+  1)
+    lo
     do_tests
     chk_pv
     chk_sl
     install_now
-  elif [ "$usr_input" == 2 ]; then
+    ;;
+  2)
+    lo
     do_tests
     chk_pv
     chk_sl
     release_go
-  elif [ "$usr_input" == 3 ]; then
+    ;;
+  3)
+    lo
     do_tests
     chk_pv
     chk_sl
     wayld_go
-  elif [ "$usr_input" == 4 ]; then
+    ;;
+  4)
     source "$HOME"/.equivoke/evakuate.sh
     lo_rm
-  else
+    ;;
+  *)
     beep_exit
     exit 1
-  fi
+    ;;
+  esac
 }
 
 lo
