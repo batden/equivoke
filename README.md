@@ -2,9 +2,9 @@
 
 A set of bash scripts to build/install/update the Enlightenment environment on your system.
 
-Or, conversely, to uninstall this environment whenever you'd like.
+Or, conversely, you can uninstall this environment whenever you'd like.
 
-Please refer to the scripts comments for hints and additional information.
+Please refer to the main script's comment for hints and additional information.
 
 > [!NOTE]
 > It may be useful to keep a record of the pre-existing system status before proceeding with the installation.
@@ -29,15 +29,15 @@ git clone https://github.com/batden/equivoke.git .equivoke
 
 This creates a new hidden folder named .equivoke in your home directory.
 
-Copy the equivoke.sh and konfig.sh files from the new .equivoke folder to your download folder.
+Copy the equivoke.sh file from the new .equivoke folder to your download folder.
 
-Navigate to the download folder and make the two scripts executable:
+Navigate to the download folder and make the script executable:
 
 ```bash
-chmod +x equivoke.sh konfig.sh
+chmod +x equivoke.sh
 ```
 
-Then, execute the main script:
+Then, execute the script:
 
 ```bash
 ./equivoke.sh
