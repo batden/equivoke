@@ -4,7 +4,7 @@ A set of bash scripts to build/install/update the Enlightenment environment on y
 
 Or, conversely, you can uninstall this environment whenever you'd like.
 
-Please refer to the main script's comment for hints and additional information.
+Please refer to the comments of equivoke.sh for hints and additional information.
 
 > [!NOTE]
 > It may be useful to keep a record of the pre-existing system status before proceeding with the installation.
