@@ -10,7 +10,7 @@
 
 # EQUIVOKE.SH handles the download, configuration, and building of everything
 # you need to enjoy the very latest version of the Enlightenment environment
-# (DEB packages —if they exist— tend to lag far behind). Once installed,
+# (DEB packages ——if they exist—— tend to lag far behind). Once installed,
 # you can update your Enlightenment desktop whenever you like.
 
 # Optional: Additional steps may be taken to achieve optimal results.
