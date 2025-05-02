@@ -38,8 +38,8 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-# Source companion scripts.
-source "$HOME"/.equivoke/konfig.sh evakuate.sh
+# Source companion script.
+source "$HOME"/.equivoke/konfig.sh
 
 # Menu hints and prompts.
 # 1: A no-frills, plain build.
@@ -603,7 +603,7 @@ bhd() {
     chk_sl
     wayld_go
   elif [ "$usr_input" == 4 ]; then
-    source_uninstl
+    source "$HOME"/.equivoke/evakuate.sh
     lo_rm
   else
     beep_exit
