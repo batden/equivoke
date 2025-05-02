@@ -615,6 +615,7 @@ bhd() {
     wayld_go
     ;;
   4)
+    lo
     source "$HOME"/.equivoke/evakuate.sh
     lo_rm
     ;;
