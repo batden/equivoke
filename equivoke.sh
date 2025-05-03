@@ -610,7 +610,7 @@ bhd() {
     source "$HOME"/.equivoke/evakuate.sh
     uninstall_enlighten
     printf "\n\n$red_bright%s %s\n" "Done."
-    # Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
+    printf "$red_bright%s $off%s\n\n" 'Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
     ;;
   *)
     beep_exit
