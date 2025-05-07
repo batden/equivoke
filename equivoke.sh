@@ -368,7 +368,7 @@ set_p_src() {
     exit 1
   fi
 
-  mkdir -p "$mypath"/sources
+  mkdir -p "$mypath/sources"
   p_srcdir="$mypath/sources"
   echo "$p_srcdir" >"$HOME/.cache/ebuilds/storepath"
   printf "\n$green_bright%s $off%s\n\n" "You have chosen: $p_srcdir"
@@ -417,8 +417,8 @@ install_now() {
   set_p_src
 
   cd "$HOME"
-  mkdir -p "$esrcdir/enlighten"
-  cd "$esrcdir/enlighten"
+  mkdir -p "$esrcdir"/enlighten
+  cd "$esrcdir"/enlighten
 
   printf "\n\n$bold%s $off%s\n\n" "Fetching source code from the Enlightenment git repositories..."
   $clonefl
