@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC1091 disable=SC2034 disable=SC2148
+# shellcheck disable=SC1091 disable=SC2034
 
 # This script contains variables, functions, and tests used by the other scripts.
 
