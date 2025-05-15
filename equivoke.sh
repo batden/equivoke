@@ -390,11 +390,7 @@ mv_sysfiles() {
 chk_pv() {
   if [ ! -x /usr/bin/pv ]; then
     printf "\n$bold%s $off%s\n\n" "Installing the pv command for menu animation..."
-    if ! timeout 30 sudo apt install -y pv; then
-      printf "\n$red_bright%s $off%s\n\n" "FAILED TO INSTALL PV. MENU ANIMATIONS WILL BE DISABLED."
-      beep_exit
-      exit 1
-    fi
+    sudo apt install -y pv
   fi
 }
 
