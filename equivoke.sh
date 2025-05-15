@@ -593,20 +593,14 @@ lo() {
 bhd() {
   case "$usr_input" in
   1)
-    chk_pv
-    chk_sl
     do_tests
     install_now
     ;;
   2)
-    chk_pv
-    chk_sl
     do_tests
     release_go
     ;;
   3)
-    chk_pv
-    chk_sl
     do_tests
     wayld_go
     ;;
@@ -622,5 +616,7 @@ bhd() {
   esac
 }
 
+chk_pv
+chk_sl
 lo
 bhd
