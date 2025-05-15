@@ -593,28 +593,27 @@ lo() {
 bhd() {
   case "$usr_input" in
   1)
-    do_tests
     chk_pv
     chk_sl
+    do_tests
     install_now
     ;;
   2)
-    do_tests
     chk_pv
     chk_sl
+    do_tests
     release_go
     ;;
   3)
-    do_tests
     chk_pv
     chk_sl
+    do_tests
     wayld_go
     ;;
   4)
     source "$HOME"/.equivoke/evakuate.sh
     uninstall_enlighten
-    printf "\n\n$red_bright%s %s\n" "Done."
-    printf "$red_bright%s $off%s\n\n" 'Candidates for further deletion: Search for "evakuate" and "ebackups" in your home folder.'
+    printf "\n\n$red_bright%s $off%s\n\n" "Done."
     ;;
   *)
     beep_exit
