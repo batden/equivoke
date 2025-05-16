@@ -67,6 +67,7 @@ menu_slct() {
   read -r usr_input
 }
 
+# Check free disk space.
 disk_spc() {
   free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
 
