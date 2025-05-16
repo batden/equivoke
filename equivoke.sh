@@ -67,6 +67,15 @@ menu_slct() {
   read -r usr_input
 }
 
+# Check free disk space.
+free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
+if [ "$free_space" -lt 3 ]; then
+  printf "\n$red_bright%s %s\n" "INSUFFICIENT DISK SPACE. AT LEAST 3 GB REQUIRED."
+  printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
+  beep_exit
+  exit 1
+fi
+
 # Check binary dependencies.
 bin_dps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
