@@ -15,9 +15,10 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-# Catch keyboard interrupt by pressing Ctrl+C.
+# Catches keyboard interrupt by pressing Ctrl+C.
 trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
 
+# Programs to be removed.
 rm_prog=(
   terminology
   enlightenment
@@ -198,6 +199,7 @@ del_list() {
   sudo rm -rf "$esrcdir/enlighten"
 }
 
+# Performs the final cleanup steps for uninstalling the Enlightenment desktop ecosystem.
 final_stp() {
   if [ -f "$HOME"/.bash_aliases ]; then
     read -r -t 12 -p "Remove the .bash_aliases file? [Y/n] " answer
