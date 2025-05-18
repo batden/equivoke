@@ -2,8 +2,6 @@
 
 This set of bash scripts will build, install, and update the Enlightenment environment on your system.
 
-You can also uninstall this environment at any time.
-
 Please read the comments of equivoke.sh for hints and additional information.
 
 > [!NOTE]
