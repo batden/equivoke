@@ -389,6 +389,7 @@ set_p_src() {
   sleep 2
 
   cd "$HOME"
+  esrcdir="$p_srcdir"
   mkdir -p "$esrcdir/enlighten"
   cd "$esrcdir/enlighten"
 }
