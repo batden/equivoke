@@ -584,7 +584,6 @@ wayld_go() {
 }
 
 # First, display the selection menu...
-#
 lo() {
   trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
 
