@@ -15,7 +15,26 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
+# Catch keyboard interrupt by pressing Ctrl+C.
 trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
+
+rm_prog=(
+  terminology
+  enlightenment
+  ephoto
+  rage
+  evisum
+  express
+  ecrire
+  enventor
+  edi
+  entice
+  enlightenment-module-forecasts
+  enlightenment-module-penguins
+  enlightenment-module-places
+  eflete
+  efl
+)
 
 # Cleans up any leftover files after uninstalling Enlightenment and related applications.
 del_list() {
@@ -237,7 +256,7 @@ uninstall_enlighten() {
 
   cd "$HOME"
 
-  for i in "${prog_mbs[@]}"; do
+  for i in "${rm_prog[@]}"; do
     cd "$esrcdir/enlighten/$i"
     sudo ninja -C build uninstall
     echo
