@@ -583,8 +583,6 @@ wayld_go() {
   exit 0
 }
 
-# Lo and behold (“bhd”)!
-#
 # First, display the selection menu...
 #
 lo() {
@@ -601,7 +599,7 @@ lo() {
 }
 
 # Then get the user's choice.
-bhd() {
+and_behold() {
   case "$usr_input" in
   1)
     disk_spc
@@ -632,7 +630,7 @@ main() {
   chk_pv
   chk_sl
   lo
-  bhd
+  and_behold
 }
 
 main "$@"
