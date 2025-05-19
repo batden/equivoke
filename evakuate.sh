@@ -199,7 +199,7 @@ del_list() {
   sudo rm -rf "$esrcdir/enlighten"
 }
 
-# Performs the final cleanup steps for uninstalling the Enlightenment desktop ecosystem.
+# Performs the final cleanup steps for uninstalling the Enlightenment ecosystem.
 final_stp() {
   if [ -f "$HOME"/.bash_aliases ]; then
     read -r -t 12 -p "Remove the .bash_aliases file? [Y/n] " answer
