@@ -129,7 +129,7 @@ deps=(
   xdotool
 )
 
-# Source repositories of programs. Latest source code available:
+# Source repositories of Enlightenment programs. Latest source code available:
 clonefl="git clone https://git.enlightenment.org/enlightenment/efl.git"
 clonety="git clone https://git.enlightenment.org/enlightenment/terminology.git"
 clonenl="git clone https://git.enlightenment.org/enlightenment/enlightenment.git"
@@ -146,7 +146,7 @@ clonepn="git clone https://git.enlightenment.org/enlightenment/enlightenment-mod
 clonepl="git clone https://git.enlightenment.org/enlightenment/enlightenment-module-places.git"
 clonete="git clone https://github.com/dimmus/eflete.git"
 
-# “mbs” stands for Meson Build System.
+# Programs to be built using the Meson Build System (“mbs”).
 prog_mbs=(
   efl
   terminology
