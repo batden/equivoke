@@ -26,7 +26,7 @@ rebasef="git config pull.rebase false"
 snin="sudo ninja -C build install"
 distro=$(lsb_release -sc)
 
-# Build dependencies, plus recommended and script-related packages.
+# Build dependencies, as well as recommended and script-related packages.
 deps=(
   arc-theme
   build-essential
