@@ -18,7 +18,7 @@
 # Catches keyboard interrupt by pressing Ctrl+C.
 trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
 
-# Programs to be removed.
+# Enlightenment programs to be removed.
 rm_prog=(
   terminology
   enlightenment
