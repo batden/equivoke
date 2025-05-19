@@ -37,7 +37,7 @@ rm_prog=(
   efl
 )
 
-# Cleans up any leftover files after uninstalling Enlightenment and related applications.
+# Cleans up any leftover files after uninstalling Enlightenment and its related applications.
 del_list() {
   cd /etc
   sudo rm -rf enlightenment
