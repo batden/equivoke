@@ -144,12 +144,6 @@ cnt_dir() {
   esac
 }
 
-mng_err() {
-  printf "\n$red_bright%s $off%s\n\n" "BUILD ERROR——TRY AGAIN LATER."
-  beep_exit
-  exit 1
-}
-
 e_bkp() {
   tstamp=$(date +%s)
 
@@ -233,11 +227,11 @@ build_plain() {
         -Devas-loaders-disabler= \
         -Dglib=true \
         -Ddocs=true
-      ninja -C build || mng_err
+      ninja -C build || mngerr
       ;;
     enlightenment)
       meson setup build -Dbuildtype=plain
-      ninja -C build || mng_err
+      ninja -C build || mngerr
       ;;
     edi)
       meson setup build -Dbuildtype=plain \
@@ -286,13 +280,13 @@ rebuild_optim() {
         -Dwl=false \
         -Dbuild-tests=false \
         -Ddocs=true
-      ninja -C build || mng_err
+      ninja -C build || mngerr
       ;;
     enlightenment)
       sudo chown "$USER" build/.ninja*
       meson setup --reconfigure build -Dbuildtype=release \
         -Dwl=false
-      ninja -C build || mng_err
+      ninja -C build || mngerr
       ;;
     edi)
       sudo chown "$USER" build/.ninja*
@@ -349,13 +343,13 @@ rebuild_wayld() {
         -Dopengl=es-egl \
         -Dbuild-tests=false \
         -Ddocs=true
-      ninja -C build || mng_err
+      ninja -C build || mngerr
       ;;
     enlightenment)
       sudo chown "$USER" build/.ninja*
       meson setup --reconfigure build -Dbuildtype=release \
         -Dwl=true
-      ninja -C build || mng_err
+      ninja -C build || mngerr
       ;;
     edi)
       sudo chown "$USER" build/.ninja*
