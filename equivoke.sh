@@ -1,10 +1,12 @@
 #!/bin/bash
 #shellcheck disable=SC1091 disable=SC2154 disable=SC2164
 
-# This script allows you to easily and securely install or update Enlightenment along with other
-# applications based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
-# Alternatively, because of the overall modular approach, it will help you to uninstall
-# the Enlightenment ecosystem in a clean and safe way.
+# This script makes it easy to install or update Enlightenment and other applications
+# based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
+
+# Due to its nested design, which allows the script to call other scripts,
+# it will also help you uninstall the Enlightenment ecosystem
+# cleanly and safely.
 
 # Supported distribution: Ubuntu Plucky Puffin.
 
@@ -40,6 +42,21 @@
 
 # Source companion script.
 source "$HOME"/.equivoke/konfig.sh
+
+trap cleanup EXIT
+trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; cleanup; }' SIGINT SIGTERM
+
+cleanup() {
+  exit_code=$?
+
+  if [ $exit_code -ne 0 ]; then
+    printf "\n$red_bright%s (CODE: %d) $off%s\n\n" "SCRIPT EXITED WITH ERROR" "$exit_code"
+  fi
+
+  echo "$(date): equivoke.sh exited with code $exit_code" >>"$HOME/.cache/ebuilds/error.log"
+
+  exit $exit_code
+}
 
 # Menu hints and prompts.
 # 1: A no-frills, plain build.
