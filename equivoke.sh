@@ -45,17 +45,23 @@ source "$HOME"/.equivoke/konfig.sh
 
 # Manage errors and keyboard interrupts.
 trap mngerr EXIT
-trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; mngerr; }' SIGINT SIGTERM
+trap '{ err_msg "KEYBOARD INTERRUPT."; mngerr; }' SIGINT SIGTERM
 
 mngerr() {
   trap - EXIT
   exit_code=$?
 
   if [ $exit_code -ne 0 ]; then
-    printf "\n$red_bright%s (CODE: %d) $off%s\n\n" "SCRIPT EXITED WITH ERROR" "$exit_code".
+    err_msg "SCRIPT EXITED WITH ERROR" "$exit_code".
   fi
 
   exit $exit_code
+}
+
+err_msg() {
+  message="$1"
+  beep_exit
+  printf "\n$red_bright%s$off\n\n" "$message"
 }
 
 # Menu hints and prompts.
@@ -89,9 +95,7 @@ disk_spc() {
   free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
 
   if [ "$free_space" -lt 3 ]; then
-    printf "\n$red_bright%s %s\n" "INSUFFICIENT DISK SPACE. AT LEAST 3 GB REQUIRED."
-    printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
-    beep_exit
+    err_msg "INSUFFICIENT DISK SPACE. AT LEAST 3 GB REQUIRED. SCRIPT ABORTED."
     exit 1
   fi
 }
@@ -99,10 +103,7 @@ disk_spc() {
 # Check binary dependencies.
 bin_dps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
-    printf "\n$red_bright%s %s\n" "CONFLICTING OR MISSING DEB PACKAGES"
-    printf "$red_bright%s %s\n" "OR DPKG DATABASE IS LOCKED."
-    printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
-    beep_exit
+    err_msg "CONFLICTING OR MISSING DEB PACKAGES OR DPKG DATABASE IS LOCKED. SCRIPT ABORTED."
     exit 1
   fi
 }
@@ -112,9 +113,7 @@ cnt_dir() {
   count=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
 
   if [ ! -d efl ] || [ ! -d enlightenment ]; then
-    printf "\n$red_bright%s %s\n" "FAILED TO DOWNLOAD MAIN COMPONENT."
-    printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
-    beep_exit
+    err_msg "FAILED TO DOWNLOAD MAIN COMPONENT. SCRIPT ABORTED."
     exit 1
   fi
   #
@@ -130,9 +129,7 @@ cnt_dir() {
     sleep 2
     ;;
   0)
-    printf "\n$red_bright%s %s\n" "OOPS! SOMETHING WENT WRONG."
-    printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
-    beep_exit
+    err_msg "OOPS! SOMETHING WENT WRONG. SCRIPT ABORTED."
     exit 1
     ;;
   *)
@@ -142,6 +139,8 @@ cnt_dir() {
     sleep 12
     ;;
   esac
+
+  return 0
 }
 
 e_bkp() {
@@ -312,12 +311,12 @@ rebuild_wayld() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    printf "\n$red_bright%s $off%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
+    err_msg "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     beep_exit
-    exit 1
+    return 1
   fi
 
-  bin_dps
+  bin_deps
   e_tokens
 
   for i in "${prog_mbs[@]}"; do
@@ -381,8 +380,7 @@ set_p_src() {
   (e.g. /home/$LOGNAME/Documents or /home/$LOGNAME/testing): " mypath
 
   if [[ ! "$mypath" =~ ^/home/$LOGNAME.* ]]; then
-    printf "\n$red_bright%s $off%s\n" "PATH MUST BE WITHIN YOUR HOME DIRECTORY (/home/$LOGNAME)."
-    beep_exit
+    err_msg "PATH MUST BE WITHIN YOUR HOME DIRECTORY (/home/$LOGNAME)."
     exit 1
   fi
 
@@ -599,7 +597,7 @@ wayld_go() {
 
 # First, display the selection menu...
 lo() {
-  trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' SIGINT
+  trap '{ err_msg "KEYBOARD INTERRUPT."; exit_code=130; mngerr; }' SIGINT
 
   usr_input=0
   printf "\n$bold%s $off%s\n" "Please enter the number of your choice:"
@@ -637,6 +635,8 @@ and_behold() {
     exit 1
     ;;
   esac
+
+  return 0
 }
 
 main() {
