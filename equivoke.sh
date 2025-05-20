@@ -312,8 +312,7 @@ rebuild_wayld() {
 
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     err_msg "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
-    beep_exit
-    return 1
+    exit 1
   fi
 
   bin_deps
