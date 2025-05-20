@@ -26,9 +26,9 @@
 
 # Heads up!
 # Enlightenment programs compiled from git source code will inevitably conflict
-# with those installed from DEB packages. Therefore, remove all previous binary
-# installations of EFL, Enlightenment, and related applications before running
-# this script.
+# with those installed from DEB packages. Therefore, remove all previous
+# binary installations of EFL, Enlightenment, and related applications
+# before running this script.
 
 # Also note that EQUIVOKE.SH is not compatible with non-standard package managers like Nix.
 
@@ -40,20 +40,20 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-# Source companion script.
+# Call companion script.
 source "$HOME"/.equivoke/konfig.sh
 
-trap cleanup EXIT
-trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; cleanup; }' SIGINT SIGTERM
+# Manage errors and keyboard interrupts.
+trap mngerr EXIT
+trap '{ printf "\n$red_bright%s $off%s\n\n" "KEYBOARD INTERRUPT."; mngerr; }' SIGINT SIGTERM
 
-cleanup() {
+mngerr() {
+  trap - EXIT
   exit_code=$?
 
   if [ $exit_code -ne 0 ]; then
-    printf "\n$red_bright%s (CODE: %d) $off%s\n\n" "SCRIPT EXITED WITH ERROR" "$exit_code"
+    printf "\n$red_bright%s (CODE: %d) $off%s\n\n" "SCRIPT EXITED WITH ERROR" "$exit_code".
   fi
-
-  echo "$(date): equivoke.sh exited with code $exit_code" >>"$HOME/.cache/ebuilds/error.log"
 
   exit $exit_code
 }
