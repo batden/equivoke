@@ -60,8 +60,13 @@ mngerr() {
 
 err_msg() {
   message="$1"
+  code="${2:-}"
   beep_exit
-  printf "\n$red_bright%s$off\n\n" "$message"
+  if [ -n "$code" ]; then
+    printf "\n$red_bright%s (CODE: %s)$off\n\n" "$message" "$code"
+  else
+    printf "\n$red_bright%s$off\n\n" "$message"
+  fi
 }
 
 # Menu hints and prompts.
