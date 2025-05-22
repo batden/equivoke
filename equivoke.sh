@@ -57,7 +57,7 @@ mngerr() {
   exit $exit_code
 }
 
-# Displays an error message with an optional error code.
+# Display an error message with an optional error code.
 # $1: The error message to display
 # $2: Optional error code (defaults to empty)
 err_msg() {
@@ -176,7 +176,7 @@ e_bkp() {
   # Then close the terminal and press Ctrl+Alt+End to restart Enlightenment if you are logged in.
 }
 
-# Oversees user interaction tokens.
+# Oversee user interaction tokens.
 e_tokens() {
   printf '%(%s)T\n' -1 >>"$HOME/.cache/ebuilds/etokens"
   mapfile -t lines <"$HOME/.cache/ebuilds/etokens"
@@ -533,7 +533,7 @@ release_go() {
   clear
   printf "\n$magenta_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON XORG SERVER *"
 
-  # Checks for available updates of the script folder first.
+  # Check for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
   cp -f equivoke.sh "$HOME/.local/bin"
   chmod +x "$HOME/.local/bin/equivoke.sh"
@@ -565,7 +565,7 @@ wayld_go() {
   clear
   printf "\n$orange_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON WAYLAND *"
 
-  # Checks for available updates of the script folder first.
+  # Check for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
   cp -f equivoke.sh "$HOME/.local/bin"
   chmod +x "$HOME/.local/bin/equivoke.sh"
