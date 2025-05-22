@@ -57,6 +57,9 @@ mngerr() {
   exit $exit_code
 }
 
+# Displays an error message with an optional error code.
+# $1: The error message to display
+# $2: Optional error code (defaults to empty)
 err_msg() {
   message="$1"
   code="${2:-}"
@@ -378,7 +381,6 @@ set_p_src() {
   beep_attention
 
   # Do not append a trailing slash (/) to the end of the path prefix.
-  #
   read -r -p "Please enter a path for the Enlightenment source folders \
   (e.g. /home/$LOGNAME/Documents or /home/$LOGNAME/testing): " mypath
 
