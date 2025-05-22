@@ -227,7 +227,7 @@ do_tests() {
   fi
 }
 
-# Creates a bash_aliases file with customized settings.
+# Create a bash_aliases file with customized settings.
 do_bsh_alias() {
   if [ -f "$HOME/.bash_aliases" ]; then
     mv -vb "$HOME/.bash_aliases" "$HOME/.bash_aliases_bak"
