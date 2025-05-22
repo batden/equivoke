@@ -34,7 +34,7 @@ rm_prog=(
   efl
 )
 
-# Cleans up any leftover files after uninstalling Enlightenment and its related applications.
+# Clean up any leftover files after uninstalling Enlightenment and its related applications.
 del_list() {
   cd /etc
   sudo rm -rf enlightenment
@@ -196,7 +196,7 @@ del_list() {
   sudo rm -rf "$esrcdir/enlighten"
 }
 
-# Performs the final cleanup steps for uninstalling the Enlightenment ecosystem.
+# Perform the final cleanup steps for uninstalling the Enlightenment ecosystem.
 final_stp() {
   if [ -f "$HOME"/.bash_aliases ]; then
     read -r -t 12 -p "Remove the .bash_aliases file? [Y/n] " answer
@@ -223,7 +223,7 @@ final_stp() {
   sudo systemctl daemon-reload
   sudo ldconfig
 
-  # Also removes the translation files.
+  # Also remove the translation files.
   find /usr/local/share/locale/*/LC_MESSAGES | while read -r i; do
     echo "$i" |
       xargs sudo rm -rf \
