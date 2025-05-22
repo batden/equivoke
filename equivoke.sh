@@ -5,8 +5,7 @@
 # based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
 
 # Due to its nested design, which allows the script to call other scripts,
-# it will also help you uninstall the Enlightenment ecosystem
-# cleanly and safely.
+# it can also help you uninstall the Enlightenment ecosystem.
 
 # Supported distribution: Ubuntu Plucky Puffin.
 
@@ -21,23 +20,23 @@
 # Tip: Set your terminal scrollback to unlimited, so you can always scroll up
 # to see the previous output.
 
-# See README.md for instructions on how to use this script.
+# See the README.md file for instructions on how to use this script.
 # See also the repository's wiki for post-installation hints.
 
 # Heads up!
-# Enlightenment programs compiled from git source code will inevitably conflict
+# Enlightenment programs compiled from Git source code will inevitably conflict
 # with those installed from DEB packages. Therefore, remove all previous
 # binary installations of EFL, Enlightenment, and related applications
 # before running this script.
 
-# Also note that EQUIVOKE.SH is not compatible with non-standard package managers like Nix.
+# Also note that EQUIVOKE.SH is not compatible with non-standard package managers such as Nix.
 
 # EQUIVOKE.SH is licensed under a Creative Commons Attribution 4.0 International License,
 # in memory of Aaron Swartz.
 # See https://creativecommons.org/licenses/by/4.0/
 
 # If you find our scripts useful, please consider starring our repositories or
-# donating with PayPal (see README.md) to show your support.
+# donating via PayPal (see README.md) to show your support.
 # Thank you!
 
 # Call companion script.
