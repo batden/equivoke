@@ -128,8 +128,8 @@ cnt_dir() {
 
   case $count in
   15)
-    printf "$green_bright%s $off%s\n\n" "All programs have been downloaded successfully."
     beep_complete
+    printf "$green_bright%s $off%s\n\n" "All programs have been downloaded successfully."
     sleep 2
     ;;
   0)
@@ -137,10 +137,10 @@ cnt_dir() {
     exit 1
     ;;
   *)
+    beep_warning
     printf "\n$yellow_bright%s %s\n" "WARNING: ONLY $count OF 15 PROGRAMS HAVE BEEN DOWNLOADED!"
-    printf "\n$yellow_bright%s $off%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO EXIT NOW."
-    beep_attention
-    sleep 12
+    printf "\n$yellow_bright%s $off%s\n\n" "WAIT 10 SECONDS OR HIT CTRL+C TO EXIT NOW."
+    sleep 10
     ;;
   esac
 
@@ -237,10 +237,16 @@ build_plain() {
       ninja -C build || mngerr
       ;;
     edi)
-      meson setup build -Dbuildtype=plain \
-        -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-        -Dlibclang-libdir=/usr/lib/llvm-11/lib
-      ninja -C build
+      if [ ! -d "/usr/lib/llvm-11" ]; then
+        beep_warning
+        printf "\n$yellow_bright%s $off%s\n\n" "WARNING: LLVM-11 DEPENDENCIES FOR EDI WERE NOT FOUND."
+        sleep 2
+      else
+        meson setup build -Dbuildtype=plain \
+          -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+          -Dlibclang-libdir=/usr/lib/llvm-11/lib
+        ninja -C build
+      fi
       ;;
     *)
       meson setup build -Dbuildtype=plain
