@@ -73,6 +73,8 @@ err_msg() {
 # 1: A no-frills, plain build.
 # 2: A feature-rich, decently optimized build on Xorg; recommended for most users.
 # 3: Similar to the above, but running Enlightenment as a Wayland compositor is still considered experimental.
+# 4: Help you uninstall the Enlightenment ecosystem completely.
+# 5: Exit the script (same thing as pressing Ctrl+C).
 #
 menu_slct() {
   is_einstl=$1
@@ -83,14 +85,16 @@ menu_slct() {
     printf "2  $magenta_dim%s $off%s\n\n" "(Update and rebuild the ecosystem in release mode)" | pv -qL 30
     printf "3  $orange_dim%s $off%s\n\n" "(Update and rebuild the ecosystem with Wayland support)" | pv -qL 30
     printf "4  $red_dim%s $off%s\n\n" "(Uninstall the Enlightenment ecosystem)" | pv -qL 30
+    printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
   else
     printf "1  $green_dim%s $off%s\n\n" "(Install the Enlightenment ecosystem now)" | pv -qL 30
     printf "2  $magenta_bright%s $off%s\n\n" "Update and rebuild the ecosystem in RELEASE mode" | pv -qL 20
     printf "3  $orange_bright%s $off%s\n\n" "Update and rebuild the ecosystem with WAYLAND support" | pv -qL 24
     printf "4  $red_bright%s $off%s\n\n" "UNINSTALL the Enlightenment ecosystem" | pv -qL 24
+    printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
   fi
 
-  sleep 1 && printf "$italic%s $off%s\n\n" "Or press Ctrl+C to quit."
+  # You can also press Ctrl+C to quit.
   read -r usr_input
 }
 
@@ -619,30 +623,39 @@ lo() {
 
 # Then get the user's choice.
 and_behold() {
-  case "$usr_input" in
-  1)
-    disk_spc
-    do_tests
-    install_now
-    ;;
-  2)
-    do_tests
-    release_go
-    ;;
-  3)
-    do_tests
-    wayld_go
-    ;;
-  4)
-    source "$HOME"/.equivoke/evakuate.sh
-    uninstall_enlighten
-    printf "\n\n$red_bright%s $off%s\n\n" "Done."
-    ;;
-  *)
-    beep_exit
-    exit 1
-    ;;
-  esac
+
+  while true; do
+    case "$usr_input" in
+    1)
+      disk_spc
+      do_tests
+      install_now
+      ;;
+    2)
+      do_tests
+      release_go
+      ;;
+    3)
+      do_tests
+      wayld_go
+      ;;
+    4)
+      source "$HOME"/.equivoke/evakuate.sh
+      uninstall_enlighten
+      printf "\n\n$red_bright%s $off%s\n\n" "Done."
+      ;;
+    5)
+      printf "\n$blue_bright%s $off%s\n\n" "Bye!"
+      exit 0
+      ;;
+    *)
+      printf "\n$red_bright%s $off%s\n\n" "INVALID INPUT. SCRIPT ABORTED."
+      beep_exit
+      exit 1
+
+      ;;
+    esac
+  done
 
   return 0
 }
