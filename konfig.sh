@@ -166,16 +166,12 @@ prog_mbs=(
 )
 
 # Audible feedback (event, sudo prompt...) on most systems.
-beep_complete() {
-  aplay --quiet /usr/share/sounds/sound-icons/glass-water-1.wav 2>/dev/null
-}
-
 beep_attention() {
   aplay --quiet /usr/share/sounds/sound-icons/percussion-50.wav 2>/dev/null
 }
 
-beep_question() {
-  aplay --quiet /usr/share/sounds/sound-icons/guitar-13.wav 2>/dev/null
+beep_complete() {
+  aplay --quiet /usr/share/sounds/sound-icons/glass-water-1.wav 2>/dev/null
 }
 
 beep_exit() {
@@ -184,6 +180,14 @@ beep_exit() {
 
 beep_ok() {
   aplay --quiet /usr/share/sounds/sound-icons/trumpet-12.wav 2>/dev/null
+}
+
+beep_question() {
+  aplay --quiet /usr/share/sounds/sound-icons/guitar-13.wav 2>/dev/null
+}
+
+beep_warning() {
+  aplay --quiet /usr/share/sounds/sound-icons/cembalo-12.wav 2>/dev/null
 }
 
 do_tests() {
