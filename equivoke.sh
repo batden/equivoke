@@ -643,6 +643,7 @@ and_behold() {
       source "$HOME"/.equivoke/evakuate.sh
       uninstall_enlighten
       printf "\n\n$red_bright%s $off%s\n\n" "Done."
+      break
       ;;
     5)
       printf "\n$blue_bright%s $off%s\n\n" "Bye!"
