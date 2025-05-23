@@ -329,7 +329,7 @@ rebuild_wayld() {
     exit 1
   fi
 
-  bin_deps
+  bin_dps
   e_tokens
 
   for i in "${prog_mbs[@]}"; do
