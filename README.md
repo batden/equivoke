@@ -4,11 +4,6 @@ This set of bash scripts will build, install, and update the Enlightenment envir
 
 Please read the comments of equivoke.sh for hints and additional information.
 
-> [!NOTE]
-> It may be useful to keep a record of the pre-existing system status before proceeding with the installation.
->
-> Check out our [backup script](https://gist.github.com/batden/993b5ee997b3df2c3b075907a1dff116).
-
 ## Installation
 
 Before using equivoke, you may need to install the git package on your system if it isn't already there.
