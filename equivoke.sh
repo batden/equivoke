@@ -39,7 +39,7 @@
 # donating via PayPal (see README.md) to show your support.
 # Thank you!
 
-# Call companion script.
+# Call the companion script.
 source "$HOME"/.equivoke/konfig.sh
 
 # Manage errors and keyboard interrupts.
@@ -94,7 +94,6 @@ menu_slct() {
     printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
   fi
 
-  # You can also press Ctrl+C to quit.
   read -r usr_input
 }
 
