@@ -41,7 +41,8 @@ To run it again later, just open a terminal and type:
 ```bash
 equivoke.sh
 ```
- Use auto-completion: Type _equ_ and press the Tab key.
+
+Use auto-completion: Type _equ_ and press the Tab key.
 
 That's it.
 
