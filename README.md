@@ -36,7 +36,7 @@ Then, execute the script:
 ./equivoke.sh
 ```
 
-To run it again later, just open a terminal and type:
+The next time you run it, simply open a terminal and type:
 
 ```bash
 equivoke.sh
