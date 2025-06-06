@@ -235,10 +235,9 @@ uninstall_enlighten() {
   sleep 2
 
   cd "$HOME"
-
   for ((i = ${#prog_mbs[@]} - 1; i >= 0; i--)); do
     printf "\n\n$red_bright%s %s\n\n" "Uninstalling %s\n" "${prog_mbs[i]}"
-    cd "$esrcdir/enlighten/$i"
+    cd "$esrcdir/enlighten/${prog_mbs[i]}"
     sudo ninja -C build uninstall
     printf "\n"
   done
