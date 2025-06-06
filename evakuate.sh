@@ -15,25 +15,6 @@
 # donating with PayPal (see README.md) to show your support.
 # Thank you!
 
-# Enlightenment programs to be removed.
-rm_prog=(
-  terminology
-  enlightenment
-  ephoto
-  rage
-  evisum
-  express
-  ecrire
-  enventor
-  edi
-  entice
-  enlightenment-module-forecasts
-  enlightenment-module-penguins
-  enlightenment-module-places
-  eflete
-  efl
-)
-
 # Clean up any leftover files after uninstalling Enlightenment and its related applications.
 del_list() {
   cd /etc
@@ -255,10 +236,11 @@ uninstall_enlighten() {
 
   cd "$HOME"
 
-  for i in "${rm_prog[@]}"; do
+  for ((i = ${#prog_mbs[@]} - 1; i >= 0; i--)); do
+    printf "\n\n$red_bright%s %s\n\n" "Uninstalling %s\n" "${prog_mbs[i]}"
     cd "$esrcdir/enlighten/$i"
     sudo ninja -C build uninstall
-    echo
+    printf "\n"
   done
 
   del_list
