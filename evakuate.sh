@@ -206,11 +206,14 @@ final_stp() {
 
   # Also remove the translation files.
   if [ -d /usr/local/share/locale ]; then
-    find /usr/local/share/locale -name "LC_MESSAGES" -type d 2>/dev/null | while read -r i; do
-      find "$i" -name "*.mo" | grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|edi|enventor|eflete|forecasts|e-module-penguins|e-module-places' | while read -r mo_file; do
-        sudo rm -f "$mo_file"
+    find /usr/local/share/locale -name "LC_MESSAGES" -type d 2>/dev/null |
+      while read -r i; do
+        find "$i" -name "*.mo" |
+          grep -E 'efl|enlightenment|ephoto|evisum|terminology|ecrire|edi|enventor|eflete|forecasts|e-module-penguins|e-module-places' |
+          while read -r mo_file; do
+            sudo rm -f "$mo_file"
+          done
       done
-    done
   fi
 }
 
