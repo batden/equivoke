@@ -1,0 +1,69 @@
+# 📘 Project Best Practices
+
+## 1. Project Purpose
+
+This project provides BASH scripts to automate the build, installation, updating, and uninstallation of the Enlightenment desktop environment and associated applications on Ubuntu systems. It is designed to help users maintain the latest Enlightenment components from upstream source.
+
+### 2. Project Structure
+
+- All project files are BASH scripts, primarily located in the `.equivoke` directory in the user's home folder.
+- **Key Scripts:**
+  - `equivoke.sh`: Main entry point for build, install, and update tasks; orchestrates the workflow.
+  - `konfig.sh`: Holds configuration variables, color codes, dependency lists, and base utility functions used by other scripts.
+  - `evakuate.sh`: Responsible for uninstalling Enlightenment and cleaning up system/user files.
+  - `images/`: Contains image assets for documentation and README.
+- Scripts often source each other; global variables and shared functions are defined in `konfig.sh`.
+- User-specific data and caches are managed under `$HOME/.cache/ebuilds/` and `$HOME/.local/bin/`.
+
+#### 3. Test Strategy
+
+- No automated test suite is provided; the scripts use runtime system checks (`do_tests` function) to validate system compatibility (e.g., Ubuntu codename, virtualization/container status, internet connectivity to repositories).
+- Error handling and user prompts are implemented throughout for step validation.
+- Manual verification is expected; users should read console outputs and follow instructions.
+- No explicit mocking or unit/integration test distinction. Script logic is procedural.
+
+#### 4. Code Style
+
+- Language: BASH (POSIX, with `bashisms` and some shellcheck suppressions).
+- Comments: Each function and major script block is commented for clarity; docstrings are common.
+- Naming:
+  - Functions: `snake_case` (e.g., `do_tests`, `menu_slct`, `final_stp`).
+  - Variables: Lowercase, descriptive (`deps`, `prog_mbs`, `exit_code`). Environment variables are upper-case when standard.
+- Use of shell formatting escape sequences for colored and styled terminal output.
+- Long `case` and `if/else` blocks structure the workflow menu and install/uninstall logic.
+- Errors invoke a beep and colored output, and cause an immediate exit.
+
+#### 5. Common Patterns
+
+- Sourcing shared configuration/scripts (`source .../konfig.sh`), providing modularity.
+- Centralized trap/interrupt handling to ensure the script exits gracefully.
+- Use of arrays for program/dependency lists (`deps`, `prog_mbs`).
+- Procedural prompts, including confirmations and path validation for destructive steps.
+- Explicit root-privilege checks and use of `sudo` as needed.
+- Cleanup/uninstall scripts are methodical, removing all relevant files and user configurations.
+
+#### 6. Do's and Don'ts
+
+- ✅ **Do**: Only run on compatible Ubuntu systems (default support for Ubuntu Plucky Puffin).
+- ✅ **Do**: Fully read all prompts and outputs before confirming destructive actions.
+- ✅ **Do**: Run scripts from a safe terminal session (not from within Enlightenment when uninstalling).
+- ✅ **Do**: Ensure source/libraries are removed from any previous DEB installations for EFL/Enlightenment before use.
+- ❌ **Don't**: Attempt to use with non-standard Linux distributions or package managers (e.g. Nix).
+- ❌ **Don't**: Run uninstall routines while currently within an Enlightenment desktop session.
+- ❌ **Don't**: Modify scripts without understanding shell syntax and effects, especially where root privileges are exercised.
+
+#### 7. Tools & Dependencies
+
+- **Core Binaries Required:** `bash`, `git`, `meson`, `ninja-build`, and a comprehensive BASH dependency list in `konfig.sh` (see `deps` array).
+- **Installation and Update:** Scripts automate cloning/updating Enlightenment/EFL/related official git repos and building with Meson/Ninja.
+- **Runtime:** Utilizes common BASH utilities (`find`, `awk`, `sed`, etc.), plus aesthetic/UX tools (`pv`, `lolcat`, `sl`).
+- **Setup:**
+  - Clone this `.equivoke` directory to your home folder.
+  - Make `equivoke.sh` executable and follow the README installation steps.
+
+#### 8. Other Notes
+
+- Project is designed for technical users with permission to install and uninstall system packages.
+- Not suitable for headless, non-desktop, or production server environments.
+- Coordination with downstream documentation (wiki, help texts, script comments) is important for newcomers.
+- Heavily relies on upstream Enlightenment project’s build and module conventions; updates to those may require script adjustments.
