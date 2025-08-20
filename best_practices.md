@@ -11,7 +11,6 @@ This project provides BASH scripts to automate the build, installation, updating
   - `equivoke.sh`: Main entry point for build, install, and update tasks; orchestrates the workflow.
   - `konfig.sh`: Holds configuration variables, color codes, dependency lists, and base utility functions used by other scripts.
   - `evakuate.sh`: Responsible for uninstalling Enlightenment and cleaning up system/user files.
-  - `images/`: Contains image assets for documentation and README.
 - Scripts often source each other; global variables and shared functions are defined in `konfig.sh`.
 - User-specific data and caches are managed under `$HOME/.cache/ebuilds/` and `$HOME/.local/bin/`.
 
