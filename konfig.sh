@@ -206,7 +206,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ "$distro" == plucky ]; then
+  if [ "$distro" == noble ]; then
     printf "\n$green_bright%s $off%s\n\n" "Ubuntu ${distro^}... OK"
     sleep 1
   else
