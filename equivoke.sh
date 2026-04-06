@@ -7,7 +7,7 @@
 # Due to its nested design, which allows the script to call other scripts,
 # it can also help you uninstall the Enlightenment ecosystem.
 
-# Supported distribution: Ubuntu Plucky Puffin.
+# Supported distribution: Ubuntu Noble Numbat.
 
 # EQUIVOKE.SH handles the download, configuration, and building of everything
 # you need to enjoy the very latest version of the Enlightenment environment
@@ -505,7 +505,7 @@ install_now() {
 
   # Doxygen outputs HTML-based (as well as LaTeX-formatted) documentation. Click on enlighten/efl/build/html/index.html
   # to open the HTML documentation in your browser.
-  # This takes a while to build, but it's a one-time thing.
+  # This takes awhile to build, but it's a one-time thing.
   #
   printf "\n\n$bold%s $off%s\n\n" "Generating the documentation for EFL..."
   sleep 1
