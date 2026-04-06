@@ -54,4 +54,4 @@ To do so, run the script and select option 4 from the menu.
 
 ## In the Picture
 
-![GitHub Image](/images/enlightenment.jpg)
+![GitHub Image](/images/e_desktop.png)
