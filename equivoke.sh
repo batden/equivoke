@@ -9,10 +9,10 @@
 
 # Supported distribution: Ubuntu Noble Numbat.
 
-# EQUIVOKE.SH handles the download, configuration, and building of everything
-# you need to enjoy the very latest version of the Enlightenment environment
-# (DEB packages——if they exist——often lag far behind). Once installed,
-# you can update your Enlightenment desktop whenever you like.
+# EQUIVOKE.SH handles the downloading, configuration, and building of everything necessary
+# to enjoy the latest version of the Enlightenment environment from Git. DEB packages,
+# if available, are often outdated.
+# Once installed, you can update your Enlightenment desktop whenever you like.
 
 # Optional: Additional steps may be taken to achieve optimal results.
 # Please refer to the comments of the build_plain() function.
