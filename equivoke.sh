@@ -375,6 +375,7 @@ rebuild_wayld() {
   done
 }
 
+# --- Set path for Enlightenment source folders ---
 set_p_src() {
   echo
   beep_attention
