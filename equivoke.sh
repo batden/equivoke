@@ -74,7 +74,6 @@ err_msg() {
 # 3: Similar to the above, but running Enlightenment as a Wayland compositor is still considered experimental.
 # 4: Help you uninstall the Enlightenment ecosystem completely.
 # 5: Exit the script (same thing as pressing Ctrl+C).
-#
 menu_slct() {
   is_einstl=$1
 
@@ -122,7 +121,6 @@ cnt_dir() {
     err_msg "FAILED TO DOWNLOAD MAIN COMPONENT. SCRIPT ABORTED."
     exit 1
   fi
-  #
   # Tip: You can try to download the missing file(s) manually (see clonefl or clonenl), then
   # rerun the script and select option 1 again; or relaunch the script at a later time.
   # In both cases, be sure to enter the same path for the Enlightenment source folders
@@ -153,27 +151,19 @@ cnt_dir() {
 e_bkp() {
   tstamp=$(date +%s)
 
-  if [ -d "$docdir/ebackups" ]; then
-    rm -rf "$docdir/ebackups"
-
-    mkdir -p "$docdir/ebackups/e_$tstamp" "$docdir/ebackups/eterm_$tstamp"
-
-    cp -aR "$HOME/.elementary" "$HOME/.e" "$docdir/ebackups/e_$tstamp" &>/dev/null
-    cp -aR "$HOME/.config/terminology" "$docdir/ebackups/eterm_$tstamp" &>/dev/null
+    mkdir -p "$docdir/ebackups/e_$tstamp" "$docdir/ebackups/eterm_$tstamp" 2>/dev/null || true
+    cp -aR "$HOME/.elementary" "$HOME/.e" "$docdir/ebackups/e_$tstamp" 2>/dev/null || true
+    cp -aR "$HOME/.config/terminology" "$docdir/ebackups/eterm_$tstamp" 2>/dev/null || true
 
     sleep 2
-  fi
-  #
-  # Timestamp: See the date man page to convert epoch to human-readable date
+  # Timestamp: See the date man page to convert epoch to a human-readable date
   # or visit https://www.epochconverter.com/
-  #
-  # To restore a backup, use the same commands that were executed, but with the source
-  # and destination reversed, similar to this:
-  # cp -aR /home/riley/Documents/ebackups/e_1747988712/.elementary/ /home/riley/
-  # cp -aR /home/riley/Documents/ebackups/e_1747988712/.e/ /home/riley/
-  # cp -aR /home/riley/Documents/ebackups/eterm_1747988712/terminology/config/ /home/riley/.config/terminology/
-  # cp -aR /home/riley/Documents/ebackups/eterm_1747988712/terminology/themes/ /home/riley/.config/terminology/
-  #
+  # To restore a backup, use the same commands that were run, but with the source
+  # and destination reversed, similar to this, in a terminal:
+  # cp -aR /home/riley/Documents/ebackups/e_1773569347/.elementary/ /home/riley/
+  # cp -aR /home/riley/Documents/ebackups/e_1773569347/.e/ /home/riley/
+  # cp -aR /home/riley/Documents/ebackups/eterm_1773569347/terminology/config/ /home/riley/.config/terminology/
+  # cp -aR /home/riley/Documents/ebackups/eterm_1773569347/terminology/themes/ /home/riley/.config/terminology/
   # Then close the terminal and press Ctrl+Alt+End to restart Enlightenment if you are logged in.
 }
 
