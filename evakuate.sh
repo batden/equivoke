@@ -2,10 +2,8 @@
 # shellcheck disable=SC1091 disable=SC2154 disable=SC2164
 
 # This script will help you uninstall Enlightenment and related applications cleanly and safely.
-
 # Note that the binary dependencies (dev packages) are preserved for system consistency.
-# There is no safe way to remove them automatically, without close supervision
-# by the user.
+# There is no safe way to remove them automatically, without close supervision by the user.
 
 # EVAKUATE.SH is licensed under a Creative Commons Attribution 4.0 International License,
 # in memory of Aaron Swartz.
@@ -14,8 +12,9 @@
 # If you find our scripts useful, please consider starring our repositories to show your support.
 # Thank you!
 
-# Clean up any leftover files after uninstalling Enlightenment and its related applications.
+# --- Clean up leftover files after uninstall ---
 del_list() {
+  # Remove system-wide files and directories.
   cd /etc
   sudo rm -rf enlightenment
 
@@ -152,6 +151,7 @@ del_list() {
   sudo rm -rf enlightenment.desktop
 
   cd "$HOME"
+  # Remove user files and directories.
   rm -rf .e
   rm -rf .e-log*
   rm -rf .elementary
@@ -176,7 +176,7 @@ del_list() {
   sudo rm -rf "$esrcdir/enlighten"
 }
 
-# Perform the final cleanup steps for uninstalling the Enlightenment ecosystem.
+# --- Final cleanup steps ---
 final_stp() {
   if [ -f "$HOME"/.bash_aliases ]; then
     read -r -t 12 -p "Remove the .bash_aliases file? [Y/n] " answer
@@ -203,7 +203,7 @@ final_stp() {
   sudo systemctl daemon-reload
   sudo ldconfig
 
-  # Also remove the translation files.
+  # Remove translation files.
   if [ -d /usr/local/share/locale ]; then
     find /usr/local/share/locale -name "LC_MESSAGES" -type d 2>/dev/null |
       while read -r i; do
@@ -216,6 +216,7 @@ final_stp() {
   fi
 }
 
+# --- Uninstall Enlightenment ecosystem ---
 uninstall_enlighten() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     printf "$red_bright%s $off%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
