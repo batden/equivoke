@@ -3,7 +3,7 @@
 
 # This script contains variables, functions, and tests used by the other scripts.
 
-# Colors and formatting.
+# --- Color and formatting ---
 green_bright="\e[1;38;5;118m"
 magenta_bright="\e[1;38;5;201m"
 orange_bright="\e[1;38;5;208m"
@@ -18,7 +18,7 @@ bold="\e[1m"
 italic="\e[3m"
 off="\e[0m"
 
-# Path definitions and aliases.
+# --- Paths and aliases ---
 dldir=$(xdg-user-dir DOWNLOAD)
 docdir=$(xdg-user-dir DOCUMENTS)
 scrfldr=$HOME/.equivoke
@@ -26,7 +26,7 @@ rebasef="git config pull.rebase false"
 snin="sudo ninja -C build install"
 distro=$(lsb_release -sc)
 
-# Build dependencies, as well as recommended and script-related packages.
+# --- Build dependencies, recommended and script-related packages ---
 deps=(
   arc-theme
   build-essential
@@ -129,7 +129,7 @@ deps=(
   xdotool
 )
 
-# Source repositories of Enlightenment programs. Latest source code available:
+# --- Source repositories of Enlightenment programs ---
 clonefl="git clone https://git.enlightenment.org/enlightenment/efl.git"
 clonety="git clone https://git.enlightenment.org/enlightenment/terminology.git"
 clonenl="git clone https://git.enlightenment.org/enlightenment/enlightenment.git"
@@ -146,7 +146,7 @@ clonepn="git clone https://git.enlightenment.org/enlightenment/enlightenment-mod
 clonepl="git clone https://git.enlightenment.org/enlightenment/enlightenment-module-places.git"
 clonete="git clone https://github.com/dimmus/eflete.git"
 
-# Programs to be built using the Meson Build System (“mbs”).
+# --- Programs to be built using the Meson build system ---
 prog_mbs=(
   efl
   terminology
@@ -165,7 +165,7 @@ prog_mbs=(
   eflete
 )
 
-# Audible feedback (event, sudo prompt...) on most systems.
+# --- Audible feedback on most systems ---
 beep_attention() {
   aplay --quiet /usr/share/sounds/sound-icons/percussion-50.wav 2>/dev/null
 }
@@ -231,7 +231,7 @@ do_tests() {
   fi
 }
 
-# Create a bash_aliases file with customized settings.
+# --- Create bash_aliases file ---
 do_bsh_alias() {
   if [ -f "$HOME/.bash_aliases" ]; then
     mv -vb "$HOME/.bash_aliases" "$HOME/.bash_aliases_bak"
