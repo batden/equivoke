@@ -665,6 +665,7 @@ and_behold() {
   return 0
 }
 
+# --- Main entry point ---
 main() {
   chk_pv
   chk_sl
