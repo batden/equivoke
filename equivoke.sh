@@ -209,12 +209,13 @@ e_tokens() {
   fi
 }
 
+# --- Build plain mode ---
+build_plain() {
 # Fetch EDI's additional dependencies before executing the script?
 # If you want edi to compile, you will also need to install the
 # packages listed in the link below:
 # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
-#
-build_plain() {
+
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
@@ -263,6 +264,7 @@ build_plain() {
   done
 }
 
+# --- Optimized rebuild (Xorg) ---
 rebuild_optim() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
@@ -320,6 +322,7 @@ rebuild_optim() {
   done
 }
 
+# --- Optimized rebuild (Wayland) ---
 rebuild_wayld() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
@@ -415,6 +418,7 @@ set_p_src() {
   cd "$esrcdir/enlighten"
 }
 
+# --- Ensure that Enlightenment system files are correctly installed ---
 mv_sysfiles() {
   sudo mkdir -p /etc/enlightenment
   sudo mv -f /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf

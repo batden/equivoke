@@ -190,6 +190,7 @@ beep_warning() {
   aplay --quiet /usr/share/sounds/sound-icons/cembalo-12.wav 2>/dev/null
 }
 
+# --- System checks ---
 do_tests() {
   if [ -x /usr/bin/wmctrl ]; then
     if [ "$XDG_SESSION_TYPE" == "x11" ]; then
