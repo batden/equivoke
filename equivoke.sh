@@ -38,10 +38,10 @@
 # If you find our scripts useful, please consider starring our repositories to show your support.
 # Thank you!
 
-# Call the companion script.
+# --- Call the companion script ---
 source "$HOME"/.equivoke/konfig.sh
 
-# Manage errors and keyboard interrupts.
+# --- Manage errors and keyboard interrupts ---
 trap mngerr EXIT
 trap '{ err_msg "KEYBOARD INTERRUPT."; mngerr; }' SIGINT SIGTERM
 
@@ -56,7 +56,7 @@ mngerr() {
   exit $exit_code
 }
 
-# Display an error message with an optional error code.
+# --- Display an error message with an optional error code ---
 err_msg() {
   message="$1"
   code="${2:-}"
@@ -68,7 +68,7 @@ err_msg() {
   fi
 }
 
-# Menu hints and prompts.
+# ---  Menu hints and prompts ---
 # 1: A no-frills, plain build.
 # 2: A feature-rich, decently optimized build on Xorg; recommended for most users.
 # 3: Similar to the above, but running Enlightenment as a Wayland compositor is still considered experimental.
@@ -96,7 +96,7 @@ menu_slct() {
   read -r usr_input
 }
 
-# Check free disk space.
+# --- Check free disk space ---
 disk_spc() {
   free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
 
@@ -106,7 +106,7 @@ disk_spc() {
   fi
 }
 
-# Check binary dependencies.
+# --- Check binary dependencies ---
 bin_dps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
     err_msg "CONFLICTING OR MISSING DEB PACKAGES OR DPKG DATABASE IS LOCKED. SCRIPT ABORTED."
@@ -114,7 +114,7 @@ bin_dps() {
   fi
 }
 
-# Check source dependencies.
+# --- Source dependencies check ---
 cnt_dir() {
   count=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
 
@@ -149,6 +149,7 @@ cnt_dir() {
   return 0
 }
 
+# --- Backup Enlightenment and Terminology settings ---
 e_bkp() {
   tstamp=$(date +%s)
 
@@ -176,7 +177,7 @@ e_bkp() {
   # Then close the terminal and press Ctrl+Alt+End to restart Enlightenment if you are logged in.
 }
 
-# Oversee user interaction tokens.
+# --- User interaction tokens ---
 e_tokens() {
   printf '%(%s)T\n' -1 >>"$HOME/.cache/ebuilds/etokens"
   mapfile -t lines <"$HOME/.cache/ebuilds/etokens"
@@ -438,6 +439,7 @@ chk_sl() {
   fi
 }
 
+# --- Restart Enlightenment session ---
 rstrt_e() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     enlightenment_remote -restart
@@ -605,7 +607,7 @@ wayld_go() {
   exit 0
 }
 
-# First, display the selection menu...
+# --- First, display the selection menu... ---
 lo() {
   trap '{ err_msg "KEYBOARD INTERRUPT."; exit_code=130; mngerr; }' SIGINT
 
@@ -619,7 +621,7 @@ lo() {
   fi
 }
 
-# Then get the user's choice.
+# --- Then get the user's choice ---
 and_behold() {
 
   while true; do
