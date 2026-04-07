@@ -499,6 +499,7 @@ install_now() {
     sudo rm -rf /usr/share/wayland-sessions/enlightenment-wayland.desktop
   fi
 
+
   # Doxygen outputs HTML-based (as well as LaTeX-formatted) documentation. Click on enlighten/efl/build/html/index.html
   # to open the HTML documentation in your browser.
   # This takes awhile to build, but it's a one-time thing.
