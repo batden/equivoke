@@ -242,11 +242,6 @@ do_bsh_alias() {
   fi
 
   cat >"$HOME/.bash_aliases" <<EOF
-    # ---------------------
-    # Environment variables
-    # ---------------------
-    # (These variables can be accessed from any shell session.)
-
     # Compiler and linker flags added by KONFIG.SH.
     export CC="ccache gcc"
     export CXX="ccache g++"
