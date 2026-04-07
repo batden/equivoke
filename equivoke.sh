@@ -105,7 +105,7 @@ disk_spc() {
   fi
 }
 
-# --- Check binary dependencies ---
+# --- Binary dependencies check ---
 bin_dps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
     err_msg "CONFLICTING OR MISSING DEB PACKAGES OR DPKG DATABASE IS LOCKED. SCRIPT ABORTED."
