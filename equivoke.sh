@@ -56,7 +56,7 @@ mngerr() {
   exit $exit_code
 }
 
-# --- Display an error message with an optional error code ---
+# --- Error handler ---
 err_msg() {
   message="$1"
   code="${2:-}"
