@@ -202,8 +202,8 @@ e_tokens() {
 # --- Build plain mode ---
 build_plain() {
 # Fetch EDI's additional dependencies before executing the script?
-# If you want edi to compile, you will also need to install the
-# packages listed in the link below:
+# If you need libclang support in edi, you will also need to install
+# the packages listed in the link below:
 # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
 
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
@@ -233,8 +233,11 @@ build_plain() {
     edi)
       if [ ! -d "/usr/lib/llvm-11" ]; then
         beep_warning
-        printf "\n$yellow_bright%s $off%s\n\n" "WARNING: LLVM-11 DEPENDENCIES FOR EDI WERE NOT FOUND."
-        sleep 2
+        printf "\n$yellow_bright%s %s\n" "WARNING: LLVM-11 DEPENDENCIES WERE NOT FOUND."
+        printf "\n$yellow_bright%s $off%s\n\n" "BUILDING EDI WITHOUT LIBCLANG SUPPORT."
+        sleep 1
+        meson setup build -Dbuildtype=plain -Dlibclang=false
+        ninja -C build
       else
         meson setup build -Dbuildtype=plain \
           -Dlibclang-headerdir=/usr/lib/llvm-11/include \
@@ -294,10 +297,16 @@ rebuild_optim() {
       ;;
     edi)
       sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release \
-        -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-        -Dlibclang-libdir=/usr/lib/llvm-11/lib
-      ninja -C build
+
+      if [ ! -d "/usr/lib/llvm-11" ]; then
+        meson setup --reconfigure build -Dbuildtype=release -Dlibclang=false
+        ninja -C build
+      else
+        meson setup --reconfigure build -Dbuildtype=release \
+          -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+          -Dlibclang-libdir=/usr/lib/llvm-11/lib
+        ninja -C build
+      fi
       ;;
     *)
       sudo chown "$USER" build/.ninja*
@@ -357,10 +366,16 @@ rebuild_wayld() {
       ;;
     edi)
       sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release \
-        -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-        -Dlibclang-libdir=/usr/lib/llvm-11/lib
-      ninja -C build
+
+      if [ ! -d "/usr/lib/llvm-11" ]; then
+        meson setup --reconfigure build -Dbuildtype=release -Dlibclang=false
+        ninja -C build
+      else
+        meson setup --reconfigure build -Dbuildtype=release \
+          -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+          -Dlibclang-libdir=/usr/lib/llvm-11/lib
+        ninja -C build
+      fi
       ;;
     *)
       sudo chown "$USER" build/.ninja*
