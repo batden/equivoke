@@ -240,6 +240,7 @@ build_plain() {
         ninja -C build
       else
         meson setup build -Dbuildtype=plain \
+          -Dlibclang=true \
           -Dlibclang-headerdir=/usr/lib/llvm-11/include \
           -Dlibclang-libdir=/usr/lib/llvm-11/lib
         ninja -C build
@@ -303,6 +304,7 @@ rebuild_optim() {
         ninja -C build
       else
         meson setup --reconfigure build -Dbuildtype=release \
+          -Dlibclang=true \
           -Dlibclang-headerdir=/usr/lib/llvm-11/include \
           -Dlibclang-libdir=/usr/lib/llvm-11/lib
         ninja -C build
@@ -372,6 +374,7 @@ rebuild_wayld() {
         ninja -C build
       else
         meson setup --reconfigure build -Dbuildtype=release \
+          -Dlibclang=true \
           -Dlibclang-headerdir=/usr/lib/llvm-11/include \
           -Dlibclang-libdir=/usr/lib/llvm-11/lib
         ninja -C build
