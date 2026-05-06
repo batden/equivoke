@@ -29,7 +29,7 @@
 # binary installations of EFL, Enlightenment, and related applications
 # before running this script.
 
-# Also note that EQUIVOKE.SH is not compatible with non-standard package managers such as Nix.
+# Also note that EQUIVOKE.SH is not compatible with nonstandard package managers such as Nix.
 
 # EQUIVOKE.SH is licensed under a Creative Commons Attribution 4.0 International License,
 # in memory of Aaron Swartz.
