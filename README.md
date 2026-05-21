@@ -1,8 +1,8 @@
 # equivoke
 
-This set of bash scripts will build, install, and update the Enlightenment environment on your system.
+This set of Bash scripts will build, install, and update the Enlightenment environment on your system.
 
-Please refer to the script comments for more information.
+For more information, please refer to the comments in the scripts.
 
 ## Installation
 
