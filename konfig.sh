@@ -198,7 +198,7 @@ do_tests() {
     fi
   fi
 
-  printf "\n\n$bold%s $off%s\n" "System check..."
+  printf "\n\n$bold%s $off%s\n" "System checks..."
 
   if systemd-detect-virt -q --container; then
     printf "\n$red_bright%s %s\n" "EQUIVOKE IS NOT INTENDED FOR USE INSIDE CONTAINERS."
