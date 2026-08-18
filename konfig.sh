@@ -116,8 +116,6 @@ deps=(
   lolcat
   manpages-dev
   manpages-posix-dev
-  meson
-  ninja-build
   papirus-icon-theme
   systemd-dev
   texlive-base
