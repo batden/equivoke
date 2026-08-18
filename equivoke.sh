@@ -69,8 +69,8 @@ err_msg() {
 }
 
 # ---  Menu hints and prompts ---
-# 1: A no-frills, plain build.
-# 2: A feature-rich, decently optimized build on Xorg; recommended for most users.
+# 1: A no-frills, plain build on Xorg.
+# 2: This is a feature-rich, decently optimized build on Xorg, which is recommended for most users.
 # 3: Similar to the above, but running Enlightenment as a Wayland compositor is still considered experimental.
 # 4: Help you uninstall the Enlightenment ecosystem completely.
 # 5: Exit the script (same thing as pressing Ctrl+C).
@@ -79,14 +79,14 @@ menu_slct() {
 
   echo
   if [ "$is_einstl" == false ]; then
-    printf "1  $green_bright%s $off%s\n\n" "INSTALL the Enlightenment ecosystem now" | pv -qL 20
-    printf "2  $magenta_dim%s $off%s\n\n" "(Update and rebuild the ecosystem in release mode)" | pv -qL 30
+    printf "1  $green_bright%s $off%s\n\n" "Install the Enlightenment ecosystem" | pv -qL 20
+    printf "2  $magenta_dim%s $off%s\n\n" "(Update and rebuild the ecosystem on Xorg)" | pv -qL 30
     printf "3  $orange_dim%s $off%s\n\n" "(Update and rebuild the ecosystem with Wayland support)" | pv -qL 30
     printf "4  $red_dim%s $off%s\n\n" "(Uninstall the Enlightenment ecosystem)" | pv -qL 30
     printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
   else
-    printf "1  $green_dim%s $off%s\n\n" "(Install the Enlightenment ecosystem now)" | pv -qL 30
-    printf "2  $magenta_bright%s $off%s\n\n" "Update and rebuild the ecosystem in RELEASE mode" | pv -qL 20
+    printf "1  $green_dim%s $off%s\n\n" "(Install the Enlightenment ecosystem)" | pv -qL 30
+    printf "2  $magenta_bright%s $off%s\n\n" "Update and rebuild the ecosystem on Xorg" | pv -qL 20
     printf "3  $orange_bright%s $off%s\n\n" "Update and rebuild the ecosystem with WAYLAND support" | pv -qL 24
     printf "4  $red_bright%s $off%s\n\n" "UNINSTALL the Enlightenment ecosystem" | pv -qL 24
     printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
@@ -199,7 +199,7 @@ e_tokens() {
   fi
 }
 
-# --- Build plain mode ---
+# --- Install build (Xorg ) ---
 build_plain() {
 # Fetch EDI's additional dependencies before executing the script?
 # If you need libclang support in edi, you will also need to install
@@ -258,7 +258,7 @@ build_plain() {
   done
 }
 
-# --- Optimized rebuild (Xorg) ---
+# --- Update build (Xorg) ---
 rebuild_optim() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
@@ -274,7 +274,7 @@ rebuild_optim() {
     case $i in
     efl)
       sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release \
+      meson setup --reconfigure build -Dbuildtype=plain \
         -Dnative-arch-optimization=true \
         -Dfb=true \
         -Dharfbuzz=true \
@@ -323,7 +323,7 @@ rebuild_optim() {
   done
 }
 
-# --- Optimized rebuild (Wayland) ---
+# --- Update build (Wayland) ---
 rebuild_wayld() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
@@ -344,7 +344,7 @@ rebuild_wayld() {
     case $i in
     efl)
       sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release \
+      meson setup --reconfigure build -Dbuildtype=plain \
         -Dnative-arch-optimization=true \
         -Dfb=true \
         -Dharfbuzz=true \
@@ -452,6 +452,30 @@ chk_sl() {
   fi
 }
 
+chk_mn() {
+  installed_meson_version=$(dpkg-query -W -f='${Version}' meson 2>/dev/null || true)
+
+  if [ ! -x /usr/bin/meson ]; then
+    printf "\n$bold%s $off%s\n\n" "Installing the recommended version of the meson package..."
+    sleep 1
+    sudo apt install -y python3-setuptools ninja-build
+    cd "$dldir"
+    wget https://launchpadlibrarian.net/850294555/meson_$mson.deb
+    sudo dpkg -i meson_$mson.deb
+    rm meson_$mson.deb
+    cd "$HOME"
+  elif [ "$installed_meson_version" != "1.10.1-1ubuntu2" ]; then
+    printf "\n$bold%s $off%s\n\n" "Updating Meson to the recommended version..."
+    sleep 1
+    sudo apt install -y python3-setuptools ninja-build
+    cd "$dldir"
+    wget https://launchpadlibrarian.net/850294555/meson_$mson.deb
+    sudo dpkg -i meson_$mson.deb
+    rm meson_$mson.deb
+    cd "$HOME"
+  fi
+}
+
 # --- Restart Enlightenment session ---
 rstrt_e() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
@@ -466,7 +490,7 @@ install_now() {
   esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
   clear
-  printf "\n$green_bright%s $off%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP ENVIRONMENT: PLAIN BUILD ON XORG SERVER *"
+  printf "\n$green_bright%s $off%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP ENVIRONMENT *"
   do_bsh_alias
   beep_attention
   bin_dps
@@ -538,7 +562,7 @@ install_now() {
 
 release_go() {
   clear
-  printf "\n$magenta_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON XORG SERVER *"
+  printf "\n$magenta_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT - XORG *"
 
   # Check for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
@@ -570,7 +594,7 @@ release_go() {
 
 wayld_go() {
   clear
-  printf "\n$orange_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON WAYLAND *"
+  printf "\n$orange_bright%s $off%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT - WAYLAND *"
 
   # Check for available updates of the script folder first.
   cd "$scrfldr" && git pull &>/dev/null
@@ -664,6 +688,7 @@ and_behold() {
 main() {
   chk_pv
   chk_sl
+  chk_mn
   lo
   and_behold
 }
