@@ -25,6 +25,7 @@ scrfldr=$HOME/.equivoke
 rebasef="git config pull.rebase false"
 snin="sudo ninja -C build install"
 distro=$(lsb_release -sc)
+mson=1.10.1-1ubuntu2_all
 
 # --- Build dependencies, recommended and script-related packages ---
 deps=(
