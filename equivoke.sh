@@ -99,8 +99,8 @@ menu_slct() {
 disk_spc() {
   free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
 
-  if [ "$free_space" -lt 3 ]; then
-    err_msg "INSUFFICIENT DISK SPACE. AT LEAST 3 GB REQUIRED. SCRIPT ABORTED."
+  if [ "$free_space" -lt 5 ]; then
+    err_msg "INSUFFICIENT DISK SPACE. AT LEAST 5 GB REQUIRED. SCRIPT ABORTED."
     exit 1
   fi
 }

@@ -246,7 +246,7 @@ do_bsh_alias() {
     export CC="ccache gcc"
     export CXX="ccache g++"
     export USE_CCACHE=1
-    export CCACHE_COMPRESS=9
+    export CCACHE_COMPRESS=6
     export CPPFLAGS=-I/usr/local/include
     export LDFLAGS=-L/usr/local/lib
     export PKG_CONFIG_PATH=/usr/local/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig
