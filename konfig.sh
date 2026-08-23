@@ -43,7 +43,6 @@ deps=(
   graphviz
   gstreamer1.0-plugins-bad
   gstreamer1.0-plugins-ugly
-  hwdata
   i2c-tools
   imagemagick
   libaom-dev
@@ -115,10 +114,8 @@ deps=(
   libxtst-dev
   libyuv-dev
   lolcat
-  manpages-dev
   manpages-posix-dev
   papirus-icon-theme
-  systemd-dev
   texlive-base
   texlive-font-utils
   unity-greeter-badges
