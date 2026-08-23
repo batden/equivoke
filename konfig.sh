@@ -239,7 +239,7 @@ do_bsh_alias() {
   fi
 
   cat >"$HOME/.bash_aliases" <<EOF
-    # Compiler and linker flags added by KONFIG.SH.
+    # Compiler and linker flags added by KONFIG.SH
     export CC="ccache gcc"
     export CXX="ccache g++"
     export USE_CCACHE=1
