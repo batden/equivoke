@@ -73,10 +73,10 @@ err_msg() {
   beep_exit || true
 
   if [ -n "$code" ]; then
-    printf "\n%s%s (CODE: %s)%s\n\n" \
+    printf "\n%b%s (CODE: %s)%b\n\n" \
       "$red_bright" "$message" "$code" "$off"
   else
-    printf "\n%s%s%s\n\n" \
+    printf "\n%b%s%b\n\n" \
       "$red_bright" "$message" "$off"
   fi
 }
