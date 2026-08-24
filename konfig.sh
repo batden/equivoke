@@ -197,8 +197,7 @@ do_tests() {
   printf "\n\n$bold%s $off%s\n" "System checks..."
 
   if systemd-detect-virt -q --container; then
-    printf "\n$red_bright%s %s\n" "EQUIVOKE IS NOT INTENDED FOR USE INSIDE CONTAINERS."
-    printf "$red_bright%s $off%s\n\n" "SCRIPT ABORTED."
+    printf "\n$red_bright%s $off%s\n\n" "EQUIVOKE IS NOT INTENDED FOR USE INSIDE CONTAINERS."
     beep_exit
     exit 1
   fi
