@@ -113,7 +113,7 @@ disk_spc() {
   free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
 
   if [ "$free_space" -lt 5 ]; then
-    err_msg "INSUFFICIENT DISK SPACE. AT LEAST 5 GB REQUIRED. SCRIPT ABORTED."
+    err_msg "INSUFFICIENT DISK SPACE. AT LEAST 5 GB REQUIRED."
     exit 1
   fi
 }
@@ -121,7 +121,7 @@ disk_spc() {
 # --- Binary dependencies check ---
 bin_dps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
-    err_msg "CONFLICTING OR MISSING DEB PACKAGES OR DPKG DATABASE IS LOCKED. SCRIPT ABORTED."
+    err_msg "CONFLICTING OR MISSING DEB PACKAGES OR DPKG DATABASE IS LOCKED."
     exit 1
   fi
 }
@@ -131,7 +131,7 @@ cnt_dir() {
   count=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
 
   if [ ! -d efl ] || [ ! -d enlightenment ]; then
-    err_msg "FAILED TO DOWNLOAD MAIN COMPONENT. SCRIPT ABORTED."
+    err_msg "FAILED TO DOWNLOAD MAIN COMPONENT."
     exit 1
   fi
   # Tip: You can try to download the missing file(s) manually (see clonefl or clonenl), then
@@ -146,7 +146,7 @@ cnt_dir() {
     sleep 2
     ;;
   0)
-    err_msg "OOPS! SOMETHING WENT WRONG. SCRIPT ABORTED."
+    err_msg "OOPS! SOMETHING WENT WRONG."
     exit 1
     ;;
   *)
@@ -686,7 +686,7 @@ and_behold() {
       exit 0
       ;;
     *)
-      printf "\n$red_bright%s $off%s\n\n" "INVALID INPUT. SCRIPT ABORTED."
+      printf "\n$red_bright%s $off%s\n\n" "INVALID INPUT."
       beep_exit
       exit 1
 
