@@ -49,7 +49,7 @@ trap 'handle_sig 143' SIGTERM
 mng_err() {
   local exit_code=$?
 
-  trap 'mng_err "$?"' EXIT
+  trap - EXIT
 
   if [ "$exit_code" -ne 0 ]; then
     err_msg "SCRIPT EXITED WITH ERROR" "$exit_code"
