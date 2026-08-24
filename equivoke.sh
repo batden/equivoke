@@ -62,7 +62,7 @@ handle_sig() {
    local exit_code=$1
 
   trap - SIGINT SIGTERM EXIT
-  err_msg "KEYBOARD INTERRUPT." "$exit_code"
+  err_msg "KEYBOARD INTERRUPT" "$exit_code"
   exit "$exit_code"
 }
 
