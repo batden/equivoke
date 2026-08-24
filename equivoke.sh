@@ -416,7 +416,7 @@ set_p_src() {
   (e.g. /home/$LOGNAME/Documents or /home/$LOGNAME/testing): " mypath
 
   if [[ ! "$mypath" =~ ^/home/$LOGNAME.* ]]; then
-    err_msg "PATH MUST BE WITHIN YOUR HOME DIRECTORY (/home/$LOGNAME)."
+    err_msg "PATH MUST BE WITHIN YOUR HOME DIRECTORY (/home/$LOGNAME)"
     exit 1
   fi
 
