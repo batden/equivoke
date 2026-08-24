@@ -42,29 +42,42 @@
 source "$HOME"/.equivoke/konfig.sh
 
 # --- Manage errors and keyboard interrupts ---
-trap mngerr EXIT
-trap '{ err_msg "KEYBOARD INTERRUPT."; mngerr; }' SIGINT SIGTERM
+trap 'mng_err' EXIT
+trap 'handle_sig 130' SIGINT
+trap 'handle_sig 143' SIGTERM
 
-mngerr() {
-  trap - EXIT
-  exit_code=$?
+mng_err() {
+  local exit_code=$?
 
-  if [ $exit_code -ne 0 ]; then
-    err_msg "SCRIPT EXITED WITH ERROR" "$exit_code".
+  trap 'mng_err "$?"' EXIT
+
+  if [ "$exit_code" -ne 0 ]; then
+    err_msg "SCRIPT EXITED WITH ERROR" "$exit_code"
   fi
 
-  exit $exit_code
+  exit "$exit_code"
 }
 
-# --- Error handler ---
+handle_sig() {
+   local exit_code=$1
+
+  trap - SIGINT SIGTERM EXIT
+  err_msg "KEYBOARD INTERRUPT." "$exit_code"
+  exit "$exit_code"
+}
+
 err_msg() {
-  message="$1"
-  code="${2:-}"
-  beep_exit
+  local message=$1
+  local code=${2:-}
+
+  beep_exit || true
+
   if [ -n "$code" ]; then
-    printf "\n$red_bright%s (CODE: %s)$off\n\n" "$message" "$code"
+    printf "\n%s%s (CODE: %s)%s\n\n" \
+      "$red_bright" "$message" "$code" "$off"
   else
-    printf "\n$red_bright%s$off\n\n" "$message"
+    printf "\n%s%s%s\n\n" \
+      "$red_bright" "$message" "$off"
   fi
 }
 
@@ -224,11 +237,11 @@ build_plain() {
         -Devas-loaders-disabler= \
         -Dglib=true \
         -Ddocs=false
-      ninja -C build || mngerr
+      ninja -C build || mng_err
       ;;
     enlightenment)
       meson setup build -Dbuildtype=plain
-      ninja -C build || mngerr
+      ninja -C build || mng_err
       ;;
     edi)
       if [ ! -d "/usr/lib/llvm-11" ]; then
@@ -288,13 +301,13 @@ rebuild_optim() {
         -Dwl=false \
         -Dbuild-tests=false \
         -Ddocs=false
-      ninja -C build || mngerr
+      ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown "$USER" build/.ninja*
       meson setup --reconfigure build -Dbuildtype=release \
         -Dwl=false
-      ninja -C build || mngerr
+      ninja -C build || mng_err
       ;;
     edi)
       sudo chown "$USER" build/.ninja*
@@ -358,13 +371,13 @@ rebuild_wayld() {
         -Dopengl=es-egl \
         -Dbuild-tests=false \
         -Ddocs=false
-      ninja -C build || mngerr
+      ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown "$USER" build/.ninja*
       meson setup --reconfigure build -Dbuildtype=release \
         -Dwl=true
-      ninja -C build || mngerr
+      ninja -C build || mng_err
       ;;
     edi)
       sudo chown "$USER" build/.ninja*
@@ -632,7 +645,7 @@ wayld_go() {
 
 # --- First, display the selection menu... ---
 lo() {
-  trap '{ err_msg "KEYBOARD INTERRUPT."; exit_code=130; mngerr; }' SIGINT
+  trap '{ err_msg "KEYBOARD INTERRUPT."; exit_code=130; mng_err; }' SIGINT
 
   usr_input=0
   printf "\n$bold%s $off%s\n" "Please enter the number of your choice:"
