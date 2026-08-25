@@ -92,17 +92,27 @@ menu_slct() {
 
   echo
   if [ "$is_einstl" == false ]; then
-    printf "1  $green_bright%s $off%s\n\n" "Install the Enlightenment ecosystem" | pv -qL 20
-    printf "2  $magenta_dim%s $off%s\n\n" "(Update and rebuild the ecosystem on Xorg)" | pv -qL 30
-    printf "3  $orange_dim%s $off%s\n\n" "(Update and rebuild the ecosystem with Wayland support)" | pv -qL 30
-    printf "4  $red_dim%s $off%s\n\n" "(Uninstall the Enlightenment ecosystem)" | pv -qL 30
-    printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
+    printf "1  $green_bright%s $off%s\n\n" \
+      "Install the Enlightenment ecosystem" | pv -qL 20
+    printf "2  $magenta_dim%s $off%s\n\n" \
+      "(Update and rebuild the ecosystem on Xorg)" | pv -qL 30
+    printf "3  $orange_dim%s $off%s\n\n" \
+      "(Update and rebuild the ecosystem with Wayland support)" | pv -qL 30
+    printf "4  $red_dim%s $off%s\n\n" \
+      "(Uninstall the Enlightenment ecosystem)" | pv -qL 30
+    printf "5  $italic%s $off%s\n\n" \
+      "Quit the script" | pv -qL 20
   else
-    printf "1  $green_dim%s $off%s\n\n" "(Install the Enlightenment ecosystem)" | pv -qL 30
-    printf "2  $magenta_bright%s $off%s\n\n" "Update and rebuild the ecosystem on Xorg" | pv -qL 20
-    printf "3  $orange_bright%s $off%s\n\n" "Update and rebuild the ecosystem with WAYLAND support" | pv -qL 24
-    printf "4  $red_bright%s $off%s\n\n" "UNINSTALL the Enlightenment ecosystem" | pv -qL 24
-    printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
+    printf "1  $green_dim%s $off%s\n\n" \
+      "(Install the Enlightenment ecosystem)" | pv -qL 30
+    printf "2  $magenta_bright%s $off%s\n\n" \
+      "Update and rebuild the ecosystem on Xorg" | pv -qL 20
+    printf "3  $orange_bright%s $off%s\n\n" \
+      "Update and rebuild the ecosystem with WAYLAND support" | pv -qL 24
+    printf "4  $red_bright%s $off%s\n\n" \
+      "UNINSTALL the Enlightenment ecosystem" | pv -qL 24
+    printf "5  $italic%s $off%s\n\n" \
+      "Quit the script" | pv -qL 20
   fi
 
   read -r usr_input
@@ -196,7 +206,7 @@ e_tokens() {
     echo
     # Questions: Enter either y or n, or press Enter to accept the default value (capital letter).
     beep_question
-    read -r -t 12 -p "Do you want to back up your Enlightenment and Terminology settings now? [y/N] " answer
+    read -r -t 12 -p "Back up Enlightenment and Terminology settings? [y/N] " answer
     case $answer in
     y | Y)
       e_bkp
