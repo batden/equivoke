@@ -1,5 +1,5 @@
 #!/bin/bash
-#shellcheck disable=SC1091 disable=SC2154 disable=SC2164
+#shellcheck disable=SC1091 disable=SC2086 disable=SC2154 disable=SC2164
 
 # This script makes it easy to install or update Enlightenment and other applications
 # based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
@@ -483,18 +483,18 @@ chk_mn() {
     sleep 1
     sudo apt install -y python3-setuptools ninja-build
     cd "$dldir"
-    wget https://launchpadlibrarian.net/850294555/meson_"$mson".deb
-    sudo dpkg -i meson_"$mson".deb
-    rm meson_"$mson".deb
+    wget https://launchpadlibrarian.net/850294555/meson_$mson.deb
+    sudo dpkg -i meson_$mson.deb
+    rm meson_$mson.deb
     cd "$HOME"
   elif [ "$installed_meson_version" != "1.10.1-1ubuntu2" ]; then
     printf "\n$bold%s $off%s\n\n" "Updating Meson to the recommended version..."
     sleep 1
     sudo apt install -y python3-setuptools ninja-build
     cd "$dldir"
-    wget https://launchpadlibrarian.net/850294555/meson_"$mson".deb
-    sudo dpkg -i meson_"$mson".deb
-    rm meson_"$mson".deb
+    wget https://launchpadlibrarian.net/850294555/meson_$mson.deb
+    sudo dpkg -i meson_$mson.deb
+    rm meson_$mson.deb
     cd "$HOME"
   fi
 }
