@@ -27,6 +27,46 @@ snin="sudo ninja -C build install"
 distro=$(lsb_release -sc)
 mson=1.10.1-1ubuntu2_all
 
+# --- Manage errors and keyboard interrupts ---
+trap 'mng_err' EXIT
+trap 'handle_sig 130' SIGINT
+trap 'handle_sig 143' SIGTERM
+
+mng_err() {
+  local exit_code=$?
+
+  trap - EXIT
+
+  if [ "$exit_code" -ne 0 ]; then
+    err_msg "SCRIPT EXITED WITH ERROR" "$exit_code"
+  fi
+
+  exit "$exit_code"
+}
+
+handle_sig() {
+   local exit_code=$1
+
+  trap - SIGINT SIGTERM EXIT
+  err_msg "KEYBOARD INTERRUPT" "$exit_code"
+  exit "$exit_code"
+}
+
+err_msg() {
+  local message=$1
+  local code=${2:-}
+
+  beep_exit || true
+
+  if [ -n "$code" ]; then
+    printf "\n%b%s (CODE: %s)%b\n\n" \
+      "$red_bright" "$message" "$code" "$off"
+  else
+    printf "\n%b%s%b\n\n" \
+      "$red_bright" "$message" "$off"
+  fi
+}
+
 # --- Build dependencies, recommended and script-related packages ---
 deps=(
   arc-theme

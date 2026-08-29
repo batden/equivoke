@@ -41,46 +41,6 @@
 # --- Call the companion script ---
 source "$HOME"/.equivoke/konfig.sh
 
-# --- Manage errors and keyboard interrupts ---
-trap 'mng_err' EXIT
-trap 'handle_sig 130' SIGINT
-trap 'handle_sig 143' SIGTERM
-
-mng_err() {
-  local exit_code=$?
-
-  trap - EXIT
-
-  if [ "$exit_code" -ne 0 ]; then
-    err_msg "SCRIPT EXITED WITH ERROR" "$exit_code"
-  fi
-
-  exit "$exit_code"
-}
-
-handle_sig() {
-   local exit_code=$1
-
-  trap - SIGINT SIGTERM EXIT
-  err_msg "KEYBOARD INTERRUPT" "$exit_code"
-  exit "$exit_code"
-}
-
-err_msg() {
-  local message=$1
-  local code=${2:-}
-
-  beep_exit || true
-
-  if [ -n "$code" ]; then
-    printf "\n%b%s (CODE: %s)%b\n\n" \
-      "$red_bright" "$message" "$code" "$off"
-  else
-    printf "\n%b%s%b\n\n" \
-      "$red_bright" "$message" "$off"
-  fi
-}
-
 # ---  Menu hints and prompts ---
 # 1: A no-frills, plain build on Xorg.
 # 2: This is a feature-rich, decently optimized build on Xorg, which is recommended for most users.
