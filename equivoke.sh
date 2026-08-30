@@ -189,13 +189,11 @@ build_plain() {
 # the packages listed in the link below:
 # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
 
-  esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
-
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
 
   for i in "${prog_mbs[@]}"; do
-    cd "$esrcdir/enlighten/$i"
+    cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten/$i"
     printf "\n$bold%s $off%s\n\n" "Building $i..."
 
     case $i in
@@ -243,13 +241,11 @@ build_plain() {
 
 # --- Update build (Xorg) ---
 rebuild_optim() {
-  esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
-
   bin_dps
   e_tokens
 
   for i in "${prog_mbs[@]}"; do
-    cd "$esrcdir/enlighten/$i"
+    cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten/$i"
     printf "\n$bold%s $off%s\n\n" "Updating $i..."
     git reset --hard &>/dev/null
     $rebasef && git pull
@@ -308,7 +304,6 @@ rebuild_optim() {
 
 # --- Update build (Wayland) ---
 rebuild_wayld() {
-  esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
 
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     err_msg "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
@@ -319,7 +314,7 @@ rebuild_wayld() {
   e_tokens
 
   for i in "${prog_mbs[@]}"; do
-    cd "$esrcdir/enlighten/$i"
+    cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten/$i"
     printf "\n$bold%s $off%s\n\n" "Updating $i..."
     git reset --hard &>/dev/null
     $rebasef && git pull
@@ -470,8 +465,6 @@ rstrt_e() {
 }
 
 install_now() {
-  esrcdir=$(cat "$HOME/.cache/ebuilds/storepath")
-
   clear
   printf "\n$green_bright%s $off%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP ENVIRONMENT *"
   do_bsh_alias
@@ -479,7 +472,7 @@ install_now() {
   bin_dps
   set_p_src
 
-  cd "$esrcdir/enlighten"
+  cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten"
 
   printf "\n\n$bold%s $off%s\n\n" "Fetching source code from the Enlightenment git repositories..."
   $clonefl
