@@ -246,6 +246,7 @@ uninstall_enlighten() {
   sleep 2
 
   cd "$HOME"
+  
   for ((i = ${#prog_mbs[@]} - 1; i >= 0; i--)); do
     printf "$red_bright%s %s$off\n" "Uninstalling" "${prog_mbs[i]}..."
     cd "$esrcdir/enlighten/${prog_mbs[i]}"
