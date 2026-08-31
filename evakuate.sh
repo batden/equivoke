@@ -12,6 +12,25 @@
 # If you find our scripts useful, please consider starring our repositories to show your support.
 # Thank you!
 
+# --- Enlightenment programs to be removed ---
+prog_rm=(
+  eflete
+  enlightenment-module-places
+  enlightenment-module-penguins
+  enlightenment-module-forecasts
+  entice
+  edi
+  enventor
+  ecrire
+  express
+  evisum
+  rage
+  ephoto
+  enlightenment
+  terminology
+  efl
+)
+
 # --- Clean up leftover files after uninstall ---
 del_list() {
   # Remove system-wide files and directories.
@@ -246,10 +265,10 @@ uninstall_enlighten() {
   sleep 2
 
   cd "$HOME"
-  
-  for ((i = ${#prog_mbs[@]} - 1; i >= 0; i--)); do
-    printf "$red_bright%s %s$off\n" "Uninstalling" "${prog_mbs[i]}..."
-    cd "$esrcdir/enlighten/${prog_mbs[i]}"
+
+    for i in "${prog_rm[@]}"; do
+    printf "$red_bright%s %s$off\n" "Uninstalling" "$i..."
+    cd "$esrcdir/enlighten/$i"
     sudo ninja -C build uninstall
     printf "\n"
   done
