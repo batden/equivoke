@@ -383,6 +383,7 @@ set_p_src() {
 
   if [[ ! "$mypath" =~ ^/home/$LOGNAME.* ]]; then
     err_msg "PATH MUST BE WITHIN YOUR HOME DIRECTORY (/home/$LOGNAME)"
+    beep_exit
     exit 1
   fi
 
