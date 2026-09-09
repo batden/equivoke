@@ -80,7 +80,7 @@ menu_slct() {
 }
 
 # --- Disk space check ---
-disk_spc() {
+disk_sp() {
   free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
 
   if [ "$free_space" -lt 5 ]; then
@@ -627,7 +627,7 @@ and_behold() {
   while true; do
     case "$usr_input" in
     1)
-      disk_spc
+      disk_sp
       do_tests
       install_now
       ;;
