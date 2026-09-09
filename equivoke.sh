@@ -623,7 +623,6 @@ lo() {
 
 # --- Then get the user's choice ---
 and_behold() {
-
   while true; do
     case "$usr_input" in
     1)
