@@ -90,7 +90,7 @@ disk_sp() {
 }
 
 # --- Binary dependencies check ---
-bin_dps() {
+bin_deps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
     err_msg "CONFLICTING OR MISSING DEB PACKAGES OR DPKG DATABASE IS LOCKED."
     exit 1
@@ -242,7 +242,7 @@ build_plain() {
 
 # --- Update build (Xorg) ---
 rebuild_optim() {
-  bin_dps
+  bin_deps
   e_tokens
 
   for i in "${prog_mbs[@]}"; do
@@ -311,7 +311,7 @@ rebuild_wayld() {
     exit 1
   fi
 
-  bin_dps
+  bin_deps
   e_tokens
 
   for i in "${prog_mbs[@]}"; do
@@ -471,7 +471,7 @@ install_now() {
   printf "\n$green_bright%s $off%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP ENVIRONMENT *"
   do_bsh_alias
   beep_attention
-  bin_dps
+  bin_deps
   set_p_src
 
   cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten"
