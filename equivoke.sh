@@ -578,7 +578,6 @@ wayld_go() {
   cd "$scrfldr" && git pull &>/dev/null
   cp -f equivoke.sh "$HOME/.local/bin"
   chmod +x "$HOME/.local/bin/equivoke.sh"
-
   sleep 1
 
   rebuild_wayld
