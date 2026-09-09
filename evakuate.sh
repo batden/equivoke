@@ -266,7 +266,7 @@ uninstall_enlighten() {
 
   cd "$HOME"
 
-    for i in "${prog_rm[@]}"; do
+  for i in "${prog_rm[@]}"; do
     printf "$red_bright%s %s$off\n" "Uninstalling" "$i..."
     cd "$esrcdir/enlighten/$i"
     sudo ninja -C build uninstall
