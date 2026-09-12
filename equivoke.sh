@@ -253,21 +253,16 @@ rebuild_optim() {
     $rebasef && git pull
 
     # Note: Due to recent changes in the source code, rebuilding efl may fail due to missing and
-    # unresolvable dependencies related to libpipewire. If this happens, you can try to manually
-    # fix the issue by following the instructions below, in your terminal.
+    # unresolvable dependencies related to libpipewire. If this happens, you can try manually
+    # fixing the issue by following the instructions below, in your terminal.
 
-    # cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten/efl/build"
-    # ninja -t clean
-    # cd ..
-    # Then copy and paste the entire meson setup command below, beginning with:
-    # "meson setup --reconfigure build -Dbuildtype=plain \"
-    # until:
-    # "-Dpipewire=false"
-    # Press Enter to execute the command.
-    # Next, run ninja -C build
-    # Now run sudo ninja -C build install, followed by sudo ldconfig
-    # Run cd to return to your home directory.
-    # Then relaunch the script and select option 2 again.
+    # cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten/efl/"
+    # meson setup --wipe build
+    # ninja -C build
+    # sudo ninja -C build install
+    # sudo ldconfig
+    # Finally, type cd to return to your home directory.
+    # Now, you can relaunch the script and select option 2 again.
     case $i in
     efl)
       sudo chown "$USER" build/.ninja*
@@ -357,7 +352,6 @@ rebuild_wayld() {
         -Dopengl=es-egl \
         -Dbuild-tests=false \
         -Ddocs=false
-
       ninja -C build || mng_err
       ;;
     enlightenment)
