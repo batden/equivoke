@@ -205,7 +205,8 @@ build_plain() {
         -Dlua-interpreter=lua \
         -Devas-loaders-disabler= \
         -Dglib=true \
-        -Ddocs=false
+        -Ddocs=false \
+        -Dpipewire=false
       ninja -C build || mng_err
       ;;
     enlightenment)
@@ -267,7 +268,8 @@ rebuild_optim() {
         -Ddrm=false \
         -Dwl=false \
         -Dbuild-tests=false \
-        -Ddocs=false
+        -Ddocs=false \
+        -Dpipewire=false
       ninja -C build || mng_err
       ;;
     enlightenment)
@@ -337,6 +339,7 @@ rebuild_wayld() {
         -Dopengl=es-egl \
         -Dbuild-tests=false \
         -Ddocs=false
+
       ninja -C build || mng_err
       ;;
     enlightenment)
