@@ -17,7 +17,7 @@ sudo apt install git
 Next, clone the repository with:
 
 ```bash
-git clone https://github.com/batden/equivoke.git .equivoke
+git clone https://github.com/batden/equivoke.git ~/.equivoke
 ```
 
 This creates a new hidden folder named .equivoke in your home directory.
