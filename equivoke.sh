@@ -3,7 +3,6 @@
 
 # This script makes it easy to install or update Enlightenment and other applications
 # based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
-
 # Due to its nested design, which allows the script to call other scripts,
 # it can also help you uninstall the Enlightenment ecosystem.
 
