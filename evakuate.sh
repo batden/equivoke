@@ -12,6 +12,9 @@
 # If you find our scripts useful, please consider starring our repositories to show your support.
 # Thank you!
 
+# --- Call the companion script ---
+source "$HOME"/.equivoke/konfig.sh
+
 # --- Enlightenment programs to be removed ---
 prog_rm=(
   eflete
