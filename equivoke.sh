@@ -38,6 +38,9 @@
 # If you find our scripts useful, please consider starring our repositories to show your support.
 # Thank you!
 
+# --- Uncomment the following line if you want the script to output in English. ---
+#export LANG=C  
+
 # --- Call the companion script ---
 source "$HOME"/.equivoke/konfig.sh
 
