@@ -9,9 +9,6 @@
 # in memory of Aaron Swartz.
 # See https://creativecommons.org/licenses/by/4.0/
 
-# If you find our scripts useful, please consider starring our repositories to show your support.
-# Thank you!
-
 # --- Call the companion script ---
 source "$HOME"/.equivoke/konfig.sh
 
