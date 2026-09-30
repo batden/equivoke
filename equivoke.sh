@@ -161,7 +161,7 @@ e_tokens() {
   if [[ "$token" -eq 10 ]]; then
     printf "\n$blue_bright%s %s" "Thank you $LOGNAME, for your trust and fidelity!"
     printf "\n$blue_bright%s $off%s\n\n" "Looks like you're on the right track..."
-    sleep 2
+    sleep 3
     sl | lolcat
     sleep 2
   elif [[ "$token" -gt 4 ]]; then
