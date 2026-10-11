@@ -352,7 +352,8 @@ rebuild_wayld() {
         -Dwl=true \
         -Dopengl=es-egl \
         -Dbuild-tests=false \
-        -Ddocs=false
+        -Ddocs=false \
+        -Dpipewire=false
       ninja -C build || mng_err
       ;;
     enlightenment)
