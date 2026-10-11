@@ -87,7 +87,6 @@ deps=(
   imagemagick
   libaom-dev
   libasound2-dev
-  libasound2-dev
   libavahi-client-dev
   libavif-dev
   libblkid-dev
@@ -95,7 +94,6 @@ deps=(
   libddcutil-dev
   libdrm-dev
   libegl1-mesa-dev
-  libexif-dev
   libexif-dev
   libfontconfig-dev
   libfreetype-dev
@@ -122,7 +120,6 @@ deps=(
   libmount-dev
   libopenjp2-7-dev
   libosmesa6-dev
-  libpam0g-dev
   libpam0g-dev
   libpoppler-cpp-dev
   libpoppler-dev
