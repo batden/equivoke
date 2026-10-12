@@ -669,7 +669,6 @@ and_behold() {
       printf "\n$red_bright%s $off%s\n\n" "INVALID INPUT."
       beep_exit
       exit 1
-
       ;;
     esac
   done
