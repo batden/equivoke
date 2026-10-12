@@ -106,10 +106,10 @@ cnt_dir() {
     err_msg "FAILED TO DOWNLOAD MAIN COMPONENT."
     exit 1
   fi
-  # Tip: You can try to download the missing file(s) manually (see clonefl or clonenl), then
-  # rerun the script and select option 1 again; or relaunch the script at a later time.
-  # In both cases, be sure to enter the same path for the Enlightenment source folders
-  # as you used before.
+  # Tip: You can try downloading the missing file(s) manually (see the "Source repositories of
+  # Enlightenment programs" section in KONFIG.SH), then rerun the script and select option 1 again.
+  # Alternatively, you can relaunch the script at a later time. In both cases, enter the same path
+  # for the Enlightenment source folders as before.
 
   case $count in
   15)
