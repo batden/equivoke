@@ -1,5 +1,5 @@
 #!/bin/bash
-#shellcheck disable=SC1091 disable=SC2086 disable=SC2154 disable=SC2164
+# shellcheck disable=SC1091 disable=SC2086 disable=SC2154 disable=SC2164
 
 # This script makes it easy to install or update Enlightenment and other applications
 # based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
