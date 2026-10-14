@@ -108,7 +108,8 @@ deps=(
   libheif-dev
   libi2c-dev
   libibus-1.0-dev
-  libinput-dev libinput-tools
+  libinput-dev
+  libinput-tools
   libjansson-dev
   libjpeg-dev
   libjson-c-dev
