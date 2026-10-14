@@ -38,7 +38,7 @@
 # If you find our scripts useful, please star our repository. Thank you!
 
 # --- Uncomment the following line if you want the script to output in C locale. ---
-#export LANG=C  
+#export LANG=C
 
 # --- Call the companion script ---
 source "$HOME"/.equivoke/konfig.sh
@@ -396,7 +396,7 @@ set_p_src() {
 
   # Do not append a trailing slash (/) to the end of the path prefix.
   read -r -p "Please enter a path for the Enlightenment source folders \
-  (e.g. /home/$LOGNAME/Documents or /home/$LOGNAME/testing): " mypath
+(e.g. /home/$LOGNAME/Documents or /home/$LOGNAME/testing): " mypath
 
   if [[ ! "$mypath" =~ ^/home/$LOGNAME.* ]]; then
     err_msg "PATH MUST BE WITHIN YOUR HOME DIRECTORY (/home/$LOGNAME)"
