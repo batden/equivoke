@@ -49,32 +49,23 @@ source "$HOME"/.equivoke/konfig.sh
 # 3: Similar to the above, but running Enlightenment as a Wayland compositor is still considered experimental.
 # 4: Help you uninstall the Enlightenment ecosystem completely.
 # 5: Exit the script (same thing as pressing Ctrl+C).
+
 menu_slct() {
   is_einstl=$1
 
   echo
   if [ "$is_einstl" == false ]; then
-    printf "1  $green_bright%s $off%s\n\n" \
-      "Install the Enlightenment ecosystem" | pv -qL 20
-    printf "2  $magenta_dim%s $off%s\n\n" \
-      "(Update and rebuild the ecosystem on Xorg)" | pv -qL 30
-    printf "3  $orange_dim%s $off%s\n\n" \
-      "(Update and rebuild the ecosystem with Wayland support)" | pv -qL 30
-    printf "4  $red_dim%s $off%s\n\n" \
-      "(Uninstall the Enlightenment ecosystem)" | pv -qL 30
-    printf "5  $italic%s $off%s\n\n" \
-      "Quit the script" | pv -qL 20
+    printf "1  $green_bright%s $off%s\n\n" "Install the Enlightenment ecosystem" | pv -qL 20
+    printf "2  $magenta_dim%s $off%s\n\n" "(Update and rebuild the ecosystem)" | pv -qL 30
+    printf "3  $orange_dim%s $off%s\n\n" "(Update and rebuild with Wayland support)" | pv -qL 30
+    printf "4  $red_dim%s $off%s\n\n" "(Uninstall the Enlightenment ecosystem)" | pv -qL 30
+    printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
   else
-    printf "1  $green_dim%s $off%s\n\n" \
-      "(Install the Enlightenment ecosystem)" | pv -qL 30
-    printf "2  $magenta_bright%s $off%s\n\n" \
-      "Update and rebuild the ecosystem on Xorg" | pv -qL 20
-    printf "3  $orange_bright%s $off%s\n\n" \
-      "Update and rebuild the ecosystem with WAYLAND support" | pv -qL 24
-    printf "4  $red_bright%s $off%s\n\n" \
-      "UNINSTALL the Enlightenment ecosystem" | pv -qL 24
-    printf "5  $italic%s $off%s\n\n" \
-      "Quit the script" | pv -qL 20
+    printf "1  $green_dim%s $off%s\n\n" "(Install the Enlightenment ecosystem)" | pv -qL 30
+    printf "2  $magenta_bright%s $off%s\n\n" "Update and rebuild the ecosystem" | pv -qL 20
+    printf "3  $orange_bright%s $off%s\n\n" "Update and rebuild with Wayland support" | pv -qL 24
+    printf "4  $red_bright%s $off%s\n\n" "UNINSTALL the Enlightenment ecosystem" | pv -qL 24
+    printf "5  $italic%s $off%s\n\n" "Quit the script" | pv -qL 20
   fi
 
   read -r usr_input
@@ -106,6 +97,7 @@ cnt_dir() {
     err_msg "FAILED TO DOWNLOAD MAIN COMPONENT."
     exit 1
   fi
+
   # Tip: You can try downloading the missing file(s) manually (see the "Source repositories of
   # Enlightenment programs" section in KONFIG.SH), then rerun the script and select option 1 again.
   # Alternatively, you can relaunch the script at a later time. In both cases, enter the same path
@@ -255,8 +247,8 @@ rebuild_optim() {
     $rebasef && git pull
 
     # Note: Due to changes in the source code, rebuilding efl may fail due to missing and
-    # unresolvable dependencies related to libpipewire. If this happens, you can try to
-    # manually resolve the issue by following the instructions below, in your terminal.
+    # unsolvable dependencies related to libpipewire. If this happens, you can try to
+    # manually fix the issue by following the instructions below, in your terminal.
 
     # cd "$(cat "$HOME/.cache/ebuilds/storepath")/enlighten/efl"
     # meson setup --wipe build
@@ -337,6 +329,7 @@ rebuild_wayld() {
 
     # Note: See the comments in the rebuild_optim() function for instructions on how to fix
     # a failed efl rebuild (then relaunch the script and select option 3 again).
+
     case $i in
       efl)
         sudo chown "$USER" build/.ninja*
