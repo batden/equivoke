@@ -6,7 +6,7 @@
 # Due to its nested design, which allows the script to call other scripts,
 # it can also help you uninstall the Enlightenment ecosystem.
 
-# EQUIVOKE.SH only supports Noble Numbat. It does not support other ubuntu releases or
+# EQUIVOKE.SH only supports Noble Numbat. It does not support other Ubuntu releases or
 # non-Ubuntu distributions. It handles downloading, configuring, and building everything
 # necessary to enjoy the latest version of this unique environment. You can update your
 # Enlightenment desktop at any time, so there's no need to wait for the release of
