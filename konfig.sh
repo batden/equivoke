@@ -229,6 +229,7 @@ beep_warning() {
 
 # --- System checks ---
 do_tests() {
+  # The maximize command below is only applicable to X11 sessions. It will not work on Wayland.
   if [ -x /usr/bin/wmctrl ]; then
     if [ "$XDG_SESSION_TYPE" == "x11" ]; then
       wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
