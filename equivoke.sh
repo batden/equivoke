@@ -136,11 +136,12 @@ cnt_dir() {
 e_bkp() {
   tstamp=$(date +%s)
 
-    mkdir -p "$docdir/ebackups/e_$tstamp" "$docdir/ebackups/eterm_$tstamp" 2>/dev/null || true
-    cp -aR "$HOME/.elementary" "$HOME/.e" "$docdir/ebackups/e_$tstamp" 2>/dev/null || true
-    cp -aR "$HOME/.config/terminology" "$docdir/ebackups/eterm_$tstamp" 2>/dev/null || true
+  mkdir -p "$docdir/ebackups/e_$tstamp" "$docdir/ebackups/eterm_$tstamp" 2>/dev/null || true
+  cp -aR "$HOME/.elementary" "$HOME/.e" "$docdir/ebackups/e_$tstamp" 2>/dev/null || true
+  cp -aR "$HOME/.config/terminology" "$docdir/ebackups/eterm_$tstamp" 2>/dev/null || true
 
-    sleep 2
+  sleep 2
+
   # Timestamp: See the date man page to convert epoch to a human-readable date
   # or visit https://www.epochconverter.com/
   # To restore a backup, use the same commands that were run, but with the source
@@ -184,12 +185,12 @@ e_tokens() {
   fi
 }
 
-# --- Install build (Xorg ) ---
+# --- Install build (Xorg) ---
 build_plain() {
-# Fetch EDI's additional dependencies before executing the script?
-# If you need libclang support in edi, you will also need to install
-# the packages listed in the link below:
-# https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
+  # Fetch EDI's additional dependencies before executing the script?
+  # If you need libclang support in edi, you will also need to install
+  # the packages listed in the link below:
+  # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
 
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
@@ -199,41 +200,41 @@ build_plain() {
     printf "\n$bold%s $off%s\n\n" "Building $i..."
 
     case $i in
-    efl)
-      meson setup build -Dbuildtype=plain \
-        -Dfb=true \
-        -Dbuild-tests=false \
-        -Dlua-interpreter=lua \
-        -Devas-loaders-disabler= \
-        -Dglib=true \
-        -Ddocs=false \
-        -Dpipewire=false
-      ninja -C build || mng_err
-      ;;
-    enlightenment)
-      meson setup build -Dbuildtype=plain
-      ninja -C build || mng_err
-      ;;
-    edi)
-      if [ ! -d "/usr/lib/llvm-11" ]; then
-        beep_warning
-        printf "\n$yellow_bright%s %s\n" "WARNING: LLVM-11 DEPENDENCIES WERE NOT FOUND."
-        printf "\n$yellow_bright%s $off%s\n\n" "BUILDING EDI WITHOUT LIBCLANG SUPPORT."
-        sleep 1
-        meson setup build -Dbuildtype=plain -Dlibclang=false
-        ninja -C build
-      else
+      efl)
         meson setup build -Dbuildtype=plain \
-          -Dlibclang=true \
-          -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-          -Dlibclang-libdir=/usr/lib/llvm-11/lib
+          -Dfb=true \
+          -Dbuild-tests=false \
+          -Dlua-interpreter=lua \
+          -Devas-loaders-disabler= \
+          -Dglib=true \
+          -Ddocs=false \
+          -Dpipewire=false
         ninja -C build
-      fi
-      ;;
-    *)
-      meson setup build -Dbuildtype=plain
-      ninja -C build
-      ;;
+        ;;
+      enlightenment)
+        meson setup build -Dbuildtype=plain
+        ninja -C build || mng_err
+        ;;
+      edi)
+        if [ ! -d "/usr/lib/llvm-11" ]; then
+          beep_warning
+          printf "\n$yellow_bright%s %s\n" "WARNING: LLVM-11 DEPENDENCIES WERE NOT FOUND."
+          printf "\n$yellow_bright%s $off%s\n\n" "BUILDING EDI WITHOUT LIBCLANG SUPPORT."
+          sleep 1
+          meson setup build -Dbuildtype=plain -Dlibclang=false
+          ninja -C build
+        else
+          meson setup build -Dbuildtype=plain \
+            -Dlibclang=true \
+            -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+            -Dlibclang-libdir=/usr/lib/llvm-11/lib
+          ninja -C build
+        fi
+        ;;
+      *)
+        meson setup build -Dbuildtype=plain
+        ninja -C build
+        ;;
     esac
 
     beep_attention
@@ -264,51 +265,52 @@ rebuild_optim() {
     # sudo ldconfig
     # Finally, type cd to return to your home directory.
     # Now, you can relaunch the script and select option 2 again.
-    case $i in
-    efl)
-      sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=plain \
-        -Dnative-arch-optimization=true \
-        -Dfb=true \
-        -Dharfbuzz=true \
-        -Dlua-interpreter=lua \
-        -Delua=true \
-        -Dbindings=lua,cxx \
-        -Devas-loaders-disabler= \
-        -Dglib=true \
-        -Dopengl=full \
-        -Ddrm=false \
-        -Dwl=false \
-        -Dbuild-tests=false \
-        -Ddocs=false \
-        -Dpipewire=false
-      ninja -C build || mng_err
-      ;;
-    enlightenment)
-      sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release \
-        -Dwl=false
-      ninja -C build || mng_err
-      ;;
-    edi)
-      sudo chown "$USER" build/.ninja*
 
-      if [ ! -d "/usr/lib/llvm-11" ]; then
-        meson setup --reconfigure build -Dbuildtype=release -Dlibclang=false
-        ninja -C build
-      else
+    case $i in
+      efl)
+        sudo chown "$USER" build/.ninja*
+        meson setup --reconfigure build -Dbuildtype=plain \
+          -Dnative-arch-optimization=true \
+          -Dfb=true \
+          -Dharfbuzz=true \
+          -Dlua-interpreter=lua \
+          -Delua=true \
+          -Dbindings=lua,cxx \
+          -Devas-loaders-disabler= \
+          -Dglib=true \
+          -Dopengl=full \
+          -Ddrm=false \
+          -Dwl=false \
+          -Dbuild-tests=false \
+          -Ddocs=false \
+          -Dpipewire=false
+        ninja -C build || mng_err
+        ;;
+      enlightenment)
+        sudo chown "$USER" build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
-          -Dlibclang=true \
-          -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-          -Dlibclang-libdir=/usr/lib/llvm-11/lib
+          -Dwl=false
+        ninja -C build || mng_err
+        ;;
+      edi)
+        sudo chown "$USER" build/.ninja*
+
+        if [ ! -d "/usr/lib/llvm-11" ]; then
+          meson setup --reconfigure build -Dbuildtype=release -Dlibclang=false
+          ninja -C build
+        else
+          meson setup --reconfigure build -Dbuildtype=release \
+            -Dlibclang=true \
+            -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+            -Dlibclang-libdir=/usr/lib/llvm-11/lib
+          ninja -C build
+        fi
+        ;;
+      *)
+        sudo chown "$USER" build/.ninja*
+        meson setup --reconfigure build -Dbuildtype=release
         ninja -C build
-      fi
-      ;;
-    *)
-      sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release
-      ninja -C build
-      ;;
+        ;;
     esac
 
     beep_attention
@@ -319,7 +321,6 @@ rebuild_optim() {
 
 # --- Update build (Wayland) ---
 rebuild_wayld() {
-
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     err_msg "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     exit 1
@@ -337,50 +338,50 @@ rebuild_wayld() {
     # Note: See the comments in the rebuild_optim() function for instructions on how to fix
     # a failed efl rebuild (then relaunch the script and select option 3 again).
     case $i in
-    efl)
-      sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=plain \
-        -Dnative-arch-optimization=true \
-        -Dfb=true \
-        -Dharfbuzz=true \
-        -Dlua-interpreter=lua \
-        -Delua=true \
-        -Dbindings=lua,cxx \
-        -Devas-loaders-disabler= \
-        -Dglib=true \
-        -Ddrm=true \
-        -Dwl=true \
-        -Dopengl=es-egl \
-        -Dbuild-tests=false \
-        -Ddocs=false \
-        -Dpipewire=false
-      ninja -C build || mng_err
-      ;;
-    enlightenment)
-      sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release \
-        -Dwl=true
-      ninja -C build || mng_err
-      ;;
-    edi)
-      sudo chown "$USER" build/.ninja*
-
-      if [ ! -d "/usr/lib/llvm-11" ]; then
-        meson setup --reconfigure build -Dbuildtype=release -Dlibclang=false
-        ninja -C build
-      else
+      efl)
+        sudo chown "$USER" build/.ninja*
+        meson setup --reconfigure build -Dbuildtype=plain \
+          -Dnative-arch-optimization=true \
+          -Dfb=true \
+          -Dharfbuzz=true \
+          -Dlua-interpreter=lua \
+          -Delua=true \
+          -Dbindings=lua,cxx \
+          -Devas-loaders-disabler= \
+          -Dglib=true \
+          -Ddrm=true \
+          -Dwl=true \
+          -Dopengl=es-egl \
+          -Dbuild-tests=false \
+          -Ddocs=false \
+          -Dpipewire=false
+        ninja -C build || mng_err
+        ;;
+      enlightenment)
+        sudo chown "$USER" build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
-          -Dlibclang=true \
-          -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-          -Dlibclang-libdir=/usr/lib/llvm-11/lib
+          -Dwl=true
+        ninja -C build || mng_err
+        ;;
+      edi)
+        sudo chown "$USER" build/.ninja*
+
+        if [ ! -d "/usr/lib/llvm-11" ]; then
+          meson setup --reconfigure build -Dbuildtype=release -Dlibclang=false
+          ninja -C build
+        else
+          meson setup --reconfigure build -Dbuildtype=release \
+            -Dlibclang=true \
+            -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+            -Dlibclang-libdir=/usr/lib/llvm-11/lib
+          ninja -C build
+        fi
+        ;;
+      *)
+        sudo chown "$USER" build/.ninja*
+        meson setup --reconfigure build -Dbuildtype=release
         ninja -C build
-      fi
-      ;;
-    *)
-      sudo chown "$USER" build/.ninja*
-      meson setup --reconfigure build -Dbuildtype=release
-      ninja -C build
-      ;;
+        ;;
     esac
 
     beep_attention
