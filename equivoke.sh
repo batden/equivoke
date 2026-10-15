@@ -179,7 +179,7 @@ e_tokens() {
 
 # --- Install build (Xorg) ---
 build_plain() {
-  # Fetch EDI's additional dependencies before executing the script?
+  # Fetch edi's additional dependencies before executing the script?
   # If you need libclang support in edi, you will also need to install
   # the packages listed in the link below:
   # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
