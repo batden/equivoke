@@ -17,7 +17,7 @@
 # Optional: Additional steps may be taken to achieve optimal results.
 # Please refer to the comments of the build_plain() function.
 
-# tip: Set your terminal's scrollback to unlimited so you can always view previous output.
+# Tip: Set your terminal's scrollback to unlimited so you can always view previous output.
 
 # See the README.md file for instructions on how to use this script.
 # See also the repository's wiki for post-installation hints.
