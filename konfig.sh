@@ -3,6 +3,10 @@
 
 # This script contains variables, functions, and tests used by the other scripts.
 
+# KONFIG.SH is licensed under a Creative Commons Attribution 4.0 International License,
+# in memory of Aaron Swartz.
+# See https://creativecommons.org/licenses/by/4.0/
+
 # --- Color and formatting ---
 green_bright="\e[1;38;5;118m"
 magenta_bright="\e[1;38;5;201m"
