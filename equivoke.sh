@@ -114,8 +114,8 @@ cnt_dir() {
     ;;
   *)
     beep_warning
-    printf "\n$yellow_bright%s %s\n" "WARNING: ONLY $count OF 15 PROGRAMS HAVE BEEN DOWNLOADED!"
-    printf "\n$yellow_bright%s $off%s\n\n" "WAIT 10 SECONDS OR HIT CTRL+C TO EXIT NOW."
+    printf "\n$yellow_bright%s %s\n" "WARNING: Only $count of 15 programs have been downloaded!"
+    printf "\n$yellow_bright%s $off%s\n\n" "wait 10 seconds or hit Ctrl+C to exit now."
     sleep 10
     ;;
   esac
@@ -208,9 +208,8 @@ build_plain() {
         ;;
       edi)
         if [ ! -d "/usr/lib/llvm-11" ]; then
-          beep_warning
-          printf "\n$yellow_bright%s %s\n" "WARNING: LLVM-11 DEPENDENCIES WERE NOT FOUND."
-          printf "\n$yellow_bright%s $off%s\n\n" "BUILDING EDI WITHOUT LIBCLANG SUPPORT."
+          printf "\n$yellow_bright%s %s\n" "WARNING: llvm-11 dependencies were not found."
+          printf "\n$yellow_bright%s $off%s\n\n" "building edi without libclang support."
           sleep 1
           meson setup build -Dbuildtype=plain -Dlibclang=false
           ninja -C build
