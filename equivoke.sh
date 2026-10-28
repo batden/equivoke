@@ -252,7 +252,7 @@ rebuild_optim() {
     case $i in
       efl)
         sudo chown "$USER" build/.ninja*
-        meson setup --reconfigure build -Dbuildtype=plain \
+        meson setup --reconfigure build -Dbuildtype=release \
           -Dnative-arch-optimization=true \
           -Dfb=true \
           -Dharfbuzz=true \
@@ -324,7 +324,7 @@ rebuild_wayld() {
     case $i in
       efl)
         sudo chown "$USER" build/.ninja*
-        meson setup --reconfigure build -Dbuildtype=plain \
+        meson setup --reconfigure build -Dbuildtype=release \
           -Dnative-arch-optimization=true \
           -Dfb=true \
           -Dharfbuzz=true \
