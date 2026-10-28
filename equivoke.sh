@@ -1,11 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC1091 disable=SC2086 disable=SC2154 disable=SC2164
 
-# This script makes it easy to install or update Enlightenment and other applications
-# based on the Enlightenment Foundation Libraries (EFL) on your Ubuntu desktop.
-# Due to its nested design, which allows the script to call other scripts,
-# it can also help you uninstall the Enlightenment ecosystem.
-
 # EQUIVOKE.SH only supports Noble Numbat. It does not support other Ubuntu releases or
 # non-Ubuntu distributions. It handles downloading, configuring, and building everything
 # necessary to enjoy the latest version of this unique environment. You can update your
@@ -33,8 +28,6 @@
 # EQUIVOKE.SH is licensed under a Creative Commons Attribution 4.0 International License,
 # in memory of Aaron Swartz.
 # See https://creativecommons.org/licenses/by/4.0/
-
-# If you find our scripts useful, please star our repository. Thank you!
 
 # --- Uncomment the following line if you want the script to output in C locale. ---
 #export LANG=C
