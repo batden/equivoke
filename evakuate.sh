@@ -212,7 +212,7 @@ final_stp() {
       sleep 1
       ;;
     n | N)
-      printf "\n$italic%s $off%s\n\n" "(do not delete .bash_aliases... OK)"
+      printf "\n$italic%s $off%s\n\n" "(Do not delete .bash_aliases... OK)"
       sleep 1
       ;;
     *)
