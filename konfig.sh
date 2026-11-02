@@ -89,7 +89,6 @@ deps=(
   gstreamer1.0-plugins-bad
   gstreamer1.0-plugins-ugly
   i2c-tools
-  imagemagick
   libaom-dev
   libasound2-dev
   libavahi-client-dev
