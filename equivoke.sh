@@ -1,16 +1,13 @@
 #!/bin/bash
 # shellcheck disable=SC1091 disable=SC2086 disable=SC2154 disable=SC2164
 
-# EQUIVOKE.SH only supports Noble Numbat. It does not support other Ubuntu releases or
+# EQUIVOKE.SH only supports Ubuntu Noble Numbat. It does not support other Ubuntu flavors or
 # non-Ubuntu distributions. It handles downloading, configuring, and building everything
 # necessary to enjoy the latest version of this unique environment. You can update your
 # Enlightenment desktop at any time, so there's no need to wait for the release of
 # new DEB packages. The programs are also better suited to your hardware. You can
 # even collaborate with the developers by reporting bugs, submitting patches,
 # and improving translations.
-
-# Optional: Additional steps may be taken to achieve optimal results.
-# Please refer to the comments of the build_plain() function.
 
 # Tip: Set your terminal's scrollback to unlimited so you can always view previous output.
 
@@ -171,7 +168,7 @@ e_tokens() {
 
 # --- Install build (Xorg) ---
 build_plain() {
-  # Fetch edi's additional dependencies before executing the script?
+  # Fetch edi's optional dependencies before executing the script?
   # If you need libclang support in edi, you will also need to install
   # the packages listed in the link below:
   # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
@@ -529,7 +526,7 @@ install_now() {
   beep_ok
 
   # Note: Enlightenment adds three shortcut icons (namely home.desktop, root.desktop and tmp.desktop)
-  # to your Desktop folder. You can safely delete them if it bothers you.
+  # to your GNOME Desktop folder. You can safely delete them if it bothers you.
 
   cowsay "Now log out of your existing session, then select Enlightenment on the login screen... \
   That's All Folks!" | lolcat -a
