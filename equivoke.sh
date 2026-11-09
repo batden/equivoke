@@ -198,8 +198,8 @@ build_plain() {
         ;;
       edi)
         if [ ! -d "/usr/lib/llvm-11" ]; then
-          printf "\n$yellow_bright%s %s\n" "WARNING: llvm-11 dependencies were not found."
-          printf "\n$yellow_bright%s $off%s\n\n" "building edi without libclang support."
+          printf "\n$yellow_dim%s %s\n" "WARNING: llvm-11 dependencies were not found."
+          printf "\n$yellow_dim%s $off%s\n\n" "building edi without libclang support."
           sleep 1
           meson setup build -Dbuildtype=plain -Dlibclang=false
           ninja -C build
