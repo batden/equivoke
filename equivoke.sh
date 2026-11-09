@@ -65,7 +65,7 @@ disk_sp() {
   free_space=$(df -BG "$HOME" | awk 'NR==2 {print $4}' | sed 's/G//')
 
   if [ "$free_space" -lt 5 ]; then
-    err_msg "INSUFFICIENT DISK SPACE. AT LEAST 5 GB REQUIRED."
+    err_msg "Insufficient disk space. At least 5 GB required."
     exit 1
   fi
 }
@@ -73,7 +73,7 @@ disk_sp() {
 # --- Binary dependencies check ---
 bin_deps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
-    err_msg "CONFLICTING OR MISSING DEB PACKAGES OR DPKG DATABASE IS LOCKED."
+    err_msg "Conflicting or missing deb packages or dpkg database is locked."
     exit 1
   fi
 }
@@ -99,12 +99,12 @@ cnt_dir() {
     sleep 2
     ;;
   0)
-    err_msg "OOPS! SOMETHING WENT WRONG."
+    err_msg "Oops! something went wrong."
     exit 1
     ;;
   *)
     printf "\n$yellow_bright%s %s\n" "WARNING: Only $count of 15 programs have been downloaded!"
-    printf "\n$yellow_bright%s $off%s\n\n" "wait 10 seconds or hit Ctrl+C to exit now."
+    printf "\n$yellow_bright%s $off%s\n\n" "Wait 10 seconds or hit Ctrl+C to exit now."
     beep_attention
     sleep 10
     ;;
@@ -199,7 +199,7 @@ build_plain() {
       edi)
         if [ ! -d "/usr/lib/llvm-11" ]; then
           printf "\n$yellow_dim%s %s\n" "WARNING: llvm-11 dependencies were not found."
-          printf "\n$yellow_dim%s $off%s\n\n" "building edi without libclang support."
+          printf "\n$yellow_dim%s $off%s\n\n" "Building edi without libclang support."
           sleep 1
           meson setup build -Dbuildtype=plain -Dlibclang=false
           ninja -C build
@@ -290,7 +290,7 @@ rebuild_optim() {
 # --- Update build (Wayland) ---
 rebuild_wayld() {
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    err_msg "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
+    err_msg "Please log in to the default desktop environment to execute this script."
     exit 1
   fi
 
@@ -366,7 +366,7 @@ set_p_src() {
 (e.g. /home/$LOGNAME/Documents or /home/$LOGNAME/testing): " mypath
 
   if [[ ! "$mypath" =~ ^/home/$LOGNAME.* ]]; then
-    err_msg "PATH MUST BE WITHIN YOUR HOME DIRECTORY (/home/$LOGNAME)"
+    err_msg "Path must be within your home directory (/home/$LOGNAME)"
     beep_exit
     exit 1
   fi
@@ -650,7 +650,7 @@ and_behold() {
       exit 0
       ;;
     *)
-      printf "\n$red_bright%s $off%s\n\n" "INVALID INPUT."
+      printf "\n$red_bright%s $off%s\n\n" "Invalid input."
       beep_exit
       exit 1
       ;;
