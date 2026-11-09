@@ -73,7 +73,7 @@ disk_sp() {
 # --- Binary dependencies check ---
 bin_deps() {
   if ! sudo apt install --no-install-recommends "${deps[@]}"; then
-    err_msg "Conflicting or missing deb packages or dpkg database is locked."
+    err_msg "Conflicting or missing deb packages. Or dpkg database is locked."
     exit 1
   fi
 }
