@@ -43,7 +43,7 @@ mng_err() {
   trap - EXIT
 
   if [ "$exit_code" -ne 0 ]; then
-    err_msg "SCRIPT EXITED WITH ERROR" "$exit_code"
+    err_msg "Script exited with error" "$exit_code"
   fi
 
   exit "$exit_code"
@@ -53,7 +53,7 @@ handle_sig() {
    local exit_code=$1
 
   trap - SIGINT SIGTERM EXIT
-  err_msg "KEYBOARD INTERRUPT" "$exit_code"
+  err_msg "Keyboard interrupt" "$exit_code"
   exit "$exit_code"
 }
 
@@ -244,7 +244,7 @@ do_tests() {
   printf "\n\n$bold%s $off%s\n" "System checks..."
 
   if systemd-detect-virt -q --container; then
-    printf "\n$red_bright%s $off%s\n\n" "EQUIVOKE IS NOT INTENDED FOR USE INSIDE CONTAINERS."
+    printf "\n$red_bright%s $off%s\n\n" "EQUIVOKE is not intended for use inside containers."
     beep_exit
     exit 1
   fi
@@ -253,14 +253,14 @@ do_tests() {
     printf "\n$green_bright%s $off%s\n\n" "Ubuntu ${distro^}... OK"
     sleep 1
   else
-    printf "\n$red_bright%s $off%s\n\n" "UNSUPPORTED OPERATING SYSTEM [ $(lsb_release -ds) ]."
+    printf "\n$red_bright%s $off%s\n\n" "Unsupported operating system [ $(lsb_release -ds) ]."
     beep_exit
     exit 1
   fi
 
   if ! git ls-remote https://git.enlightenment.org/enlightenment/efl.git HEAD &>/dev/null; then
-    printf "\n$red_bright%s %s\n" "REMOTE HOST IS UNREACHABLE——TRY AGAIN LATER"
-    printf "$red_bright%s $off%s\n\n" "OR CHECK YOUR INTERNET CONNECTION."
+    printf "\n$red_bright%s %s\n" "Remote host is unreachable——try again later."
+    printf "$red_bright%s $off%s\n\n" "Or check your internet connection."
     beep_exit
     exit 1
   fi
