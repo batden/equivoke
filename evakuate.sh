@@ -246,7 +246,7 @@ final_stp() {
 # --- Uninstall Enlightenment ecosystem ---
 uninstall_enlighten() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
-    printf "$red_bright%s $off%s\n\n" "PLEASE LOG IN TO YOUR DEFAULT DESKTOP TO RUN THIS SCRIPT."
+    printf "$red_bright%s $off%s\n\n" "Please log in to your default desktop to run this script."
     beep_exit
     exit 1
   fi
